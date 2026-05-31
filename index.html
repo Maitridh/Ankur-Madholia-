@@ -988,7 +988,6 @@
         color: var(--indigo);
         background: var(--indigo-dim);
       }
-      /* ── GRID LAYOUTS → now flexbox so images size to their own content ── */
       .grid2 {
         display: flex;
         flex-wrap: wrap;
@@ -999,7 +998,6 @@
         flex-wrap: wrap;
         gap: 8px;
       }
-      /* Each image is a flex item: grows to fill half / third of row */
       .grid2 > .lb-src,
       .grid2 > img {
         flex: 1 1 calc(50% - 4px);
@@ -1010,7 +1008,6 @@
         flex: 1 1 calc(33.33% - 6px);
         min-width: 120px;
       }
-      /* Divs that wrap images in grids */
       .grid2 > div,
       .grid3 > div {
         background: var(--black);
@@ -1018,8 +1015,6 @@
       .media-section {
         margin-bottom: 5rem;
       }
-
-      /* ── IMAGES: natural aspect ratio, no crop ── */
       .lb-src {
         display: block;
         width: 100%;
@@ -1027,7 +1022,6 @@
         object-fit: contain;
         background: var(--surface);
         cursor: zoom-in;
-        /* fade-in initial state */
         opacity: 0;
         transform: translateY(28px);
         transition:
@@ -1035,7 +1029,6 @@
           transform 0.65s ease,
           filter 0.3s;
       }
-      /* revealed by IntersectionObserver */
       .lb-src.img-visible {
         opacity: 1;
         transform: translateY(0);
@@ -1054,8 +1047,6 @@
         height: auto;
         max-height: 340px;
       }
-
-      /* ── BHASMASUR: 2D retro sprites — natural size, centred in padded cell ── */
       #page-proj-bhasmasur .grid2,
       #page-proj-bhasmasur .grid3 {
         gap: 12px;
@@ -1077,8 +1068,6 @@
         width: auto;
         max-width: 100%;
       }
-
-      /* ── LEVEL DESIGNS: video grid — strict 2-column CSS grid ── */
       .levels-vid-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1090,8 +1079,6 @@
         display: block;
         background: #050510;
       }
-
-      /* ── LEVEL DESIGNS: jpeg maps — natural size, centred in padded cell ── */
       #page-proj-levels .grid2,
       #page-proj-levels .grid3 {
         gap: 12px;
@@ -1145,25 +1132,6 @@
         font-size: 0.78rem;
         color: #c0bce0;
         margin-top: 0.2rem;
-      }
-      .ph-img,
-      .ph-vid {
-        min-height: 260px;
-        background: rgba(232, 226, 217, 0.03);
-        border: 1px dashed rgba(232, 226, 217, 0.12);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-      }
-      .ph-label {
-        font-family: var(--mono);
-        font-size: 0.58rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #6864a0;
-        text-align: center;
       }
       .next-project {
         border-top: 1px solid var(--border);
@@ -1309,7 +1277,6 @@
         color: #f5f3ff !important;
         text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
       }
-      /* videos: always fully visible */
       .media-section video,
       .proj-overview video,
       video {
@@ -1319,7 +1286,6 @@
         mix-blend-mode: normal !important;
         opacity: 1 !important;
       }
-      /* images: z-index + blend fix only — opacity left to fade-in observer */
       .media-section img,
       img.lb-src {
         position: relative;
@@ -1877,43 +1843,22 @@
     </div>
     <div id="tv-scanline"></div>
     <audio id="bg-music" loop preload="auto">
-      <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\website bg music_compressed.m4a" type="audio/mp4" />
+      <source src="./assets/bg-music.m4a" type="audio/mp4" />
     </audio>
     <div id="music-btn" title="Toggle music">
-      <svg
-        id="icon-sound"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"
-      >
+      <svg id="icon-sound" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
         <path d="M19.07 4.93a10 10 0 010 14.14" />
         <path d="M15.54 8.46a5 5 0 010 7.07" />
       </svg>
-      <svg
-        id="icon-mute"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.8"
-        style="display: none"
-      >
+      <svg id="icon-mute" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="display: none">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
         <line x1="23" y1="9" x2="17" y2="15" />
         <line x1="17" y1="9" x2="23" y2="15" />
       </svg>
     </div>
     <div id="cur-dot"></div>
-    <div id="cur-circle">
-      View
-      <br />
-      project
-    </div>
+    <div id="cur-circle">View<br />project</div>
     <div id="curtain"></div>
     <div id="title-overlay"><div id="overlay-title"></div></div>
 
@@ -1961,86 +1906,36 @@
         </div>
       </div>
       <div class="sr-section-label">Project Showreel</div>
-      <section
-        class="showreel"
-        id="showreel-home"
-        data-list-title="Showreel"
-        data-eyebrow="All Projects"
-        data-src="main"
-      ></section>
+      <section class="showreel" id="showreel-home" data-list-title="Showreel" data-eyebrow="All Projects" data-src="main"></section>
       <section class="home-work">
         <div class="home-work-label">Selected Work</div>
         <a class="work-item fisheye-card" href="#" data-page="proj-vengeance">
-          <div class="wi-left">
-            <span class="wi-num">01</span>
-            <div>
-              <div class="wi-title">The Vengeance</div>
-              <div class="wi-type">3D Action Game - 2024</div>
-            </div>
-          </div>
+          <div class="wi-left"><span class="wi-num">01</span><div><div class="wi-title">The Vengeance</div><div class="wi-type">3D Action Game - 2024</div></div></div>
           <span class="wi-arrow">&rarr;</span>
         </a>
         <a class="work-item fisheye-card" href="#" data-page="proj-untitled">
-          <div class="wi-left">
-            <span class="wi-num">02</span>
-            <div>
-              <div class="wi-title">Untitled</div>
-              <div class="wi-type">3D Horror Game - 2024</div>
-            </div>
-          </div>
+          <div class="wi-left"><span class="wi-num">02</span><div><div class="wi-title">Untitled</div><div class="wi-type">3D Horror Game - 2024</div></div></div>
           <span class="wi-arrow">&rarr;</span>
         </a>
         <a class="work-item fisheye-card" href="#" data-page="proj-bhasmasur">
-          <div class="wi-left">
-            <span class="wi-num">03</span>
-            <div>
-              <div class="wi-title">Wrath of Bhasmasur</div>
-              <div class="wi-type">2D Arcade Game - 2023</div>
-            </div>
-          </div>
+          <div class="wi-left"><span class="wi-num">03</span><div><div class="wi-title">Wrath of Bhasmasur</div><div class="wi-type">2D Arcade Game - 2023</div></div></div>
           <span class="wi-arrow">&rarr;</span>
         </a>
         <a class="work-item fisheye-card" href="#" data-page="proj-voodoo">
-          <div class="wi-left">
-            <span class="wi-num">04</span>
-            <div>
-              <div class="wi-title">Voodoo Concept</div>
-              <div class="wi-type">Video / Concept - 2024</div>
-            </div>
-          </div>
+          <div class="wi-left"><span class="wi-num">04</span><div><div class="wi-title">Voodoo Concept</div><div class="wi-type">Video / Concept - 2024</div></div></div>
           <span class="wi-arrow">&rarr;</span>
         </a>
         <a class="work-item fisheye-card" href="#" data-page="proj-levels">
-          <div class="wi-left">
-            <span class="wi-num">05</span>
-            <div>
-              <div class="wi-title">Level Designs</div>
-              <div class="wi-type">Video / Concept - 2024</div>
-            </div>
-          </div>
+          <div class="wi-left"><span class="wi-num">05</span><div><div class="wi-title">Level Designs</div><div class="wi-type">Video / Concept - 2024</div></div></div>
           <span class="wi-arrow">&rarr;</span>
         </a>
         <a class="work-item fisheye-card" href="#" data-page="proj-gdd">
-          <div class="wi-left">
-            <span class="wi-num">06</span>
-            <div>
-              <div class="wi-title">Documentation</div>
-              <div class="wi-type">GDDs - 2023-2025</div>
-            </div>
-          </div>
+          <div class="wi-left"><span class="wi-num">06</span><div><div class="wi-title">Documentation</div><div class="wi-type">GDDs - 2023-2025</div></div></div>
           <span class="wi-arrow">&rarr;</span>
         </a>
       </section>
       <section class="contact-section">
-        <div class="contact-left">
-          <h2>
-            Let's
-            <br />
-            work
-            <br />
-            <span class="ghost">together</span>
-          </h2>
-        </div>
+        <div class="contact-left"><h2>Let's<br />work<br /><span class="ghost">together</span></h2></div>
         <div class="contact-right">
           <p>Let's create something epic! Ready to level up your game? Let's make it happen!</p>
           <a class="contact-email" href="mailto:ankurmadholya01@gmail.com">ankurmadholya01@gmail.com</a>
@@ -2059,120 +1954,39 @@
     <!-- ═══════════════ WORK ═══════════════ -->
     <div id="page-work" class="page">
       <header class="work-page-header">
-        <p
-          style="
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #b8b8ff;
-            margin-bottom: 1rem;
-          "
-        >
-          Selected Projects
-        </p>
-        <h1>
-          Work &amp;
-          <br />
-          <em>Projects</em>
-        </h1>
+        <p style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8b8ff;margin-bottom:1rem;">Selected Projects</p>
+        <h1>Work &amp;<br /><em>Projects</em></h1>
       </header>
-      <div class="sr-section-label" style="margin-top: 3rem">Project Showreel</div>
-      <section
-        class="showreel"
-        id="showreel-work"
-        data-list-title="Showreel"
-        data-eyebrow="Footage"
-        data-src="main"
-      ></section>
+      <div class="sr-section-label" style="margin-top:3rem">Project Showreel</div>
+      <section class="showreel" id="showreel-work" data-list-title="Showreel" data-eyebrow="Footage" data-src="main"></section>
       <main class="works-container">
         <a class="work-card fisheye-card" href="#" data-page="proj-vengeance">
           <div class="work-card-bg"></div>
-          <div class="work-card-inner">
-            <div>
-              <div class="wc-kicker">01 / 06 - 3D Action Game - 2024</div>
-              <div class="wc-name">
-                The
-                <br />
-                Vengeance
-              </div>
-            </div>
-            <div class="wc-badge">View Project &rarr;</div>
-          </div>
+          <div class="work-card-inner"><div><div class="wc-kicker">01 / 06 - 3D Action Game - 2024</div><div class="wc-name">The<br />Vengeance</div></div><div class="wc-badge">View Project &rarr;</div></div>
         </a>
         <a class="work-card fisheye-card" href="#" data-page="proj-untitled">
           <div class="work-card-bg"></div>
-          <div class="work-card-inner">
-            <div>
-              <div class="wc-kicker">02 / 06 - 3D Horror Game - 2024</div>
-              <div class="wc-name">Untitled</div>
-            </div>
-            <div class="wc-badge">View Project &rarr;</div>
-          </div>
+          <div class="work-card-inner"><div><div class="wc-kicker">02 / 06 - 3D Horror Game - 2024</div><div class="wc-name">Untitled</div></div><div class="wc-badge">View Project &rarr;</div></div>
         </a>
         <a class="work-card fisheye-card" href="#" data-page="proj-bhasmasur">
           <div class="work-card-bg"></div>
-          <div class="work-card-inner">
-            <div>
-              <div class="wc-kicker">03 / 06 - 2D Arcade - 2023</div>
-              <div class="wc-name">
-                Wrath of
-                <br />
-                Bhasmasur
-              </div>
-            </div>
-            <div class="wc-badge">View Project &rarr;</div>
-          </div>
+          <div class="work-card-inner"><div><div class="wc-kicker">03 / 06 - 2D Arcade - 2023</div><div class="wc-name">Wrath of<br />Bhasmasur</div></div><div class="wc-badge">View Project &rarr;</div></div>
         </a>
         <a class="work-card fisheye-card" href="#" data-page="proj-voodoo">
           <div class="work-card-bg"></div>
-          <div class="work-card-inner">
-            <div>
-              <div class="wc-kicker">04 / 06 - Video / Concept - 2024</div>
-              <div class="wc-name">
-                Voodoo
-                <br />
-                Concepts
-              </div>
-            </div>
-            <div class="wc-badge">View Project &rarr;</div>
-          </div>
+          <div class="work-card-inner"><div><div class="wc-kicker">04 / 06 - Video / Concept - 2024</div><div class="wc-name">Voodoo<br />Concepts</div></div><div class="wc-badge">View Project &rarr;</div></div>
         </a>
         <a class="work-card fisheye-card" href="#" data-page="proj-levels">
           <div class="work-card-bg"></div>
-          <div class="work-card-inner">
-            <div>
-              <div class="wc-kicker">05 / 06 - Level Designs - 2024</div>
-              <div class="wc-name">
-                Level
-                <br />
-                Designs
-              </div>
-            </div>
-            <div class="wc-badge">View Project &rarr;</div>
-          </div>
+          <div class="work-card-inner"><div><div class="wc-kicker">05 / 06 - Level Designs - 2024</div><div class="wc-name">Level<br />Designs</div></div><div class="wc-badge">View Project &rarr;</div></div>
         </a>
         <a class="work-card fisheye-card" href="#" data-page="proj-gdd">
           <div class="work-card-bg"></div>
-          <div class="work-card-inner">
-            <div>
-              <div class="wc-kicker">06 / 06 - Design Documents</div>
-              <div class="wc-name">Documentation</div>
-            </div>
-            <div class="wc-badge">View &rarr;</div>
-          </div>
+          <div class="work-card-inner"><div><div class="wc-kicker">06 / 06 - Design Documents</div><div class="wc-name">Documentation</div></div><div class="wc-badge">View &rarr;</div></div>
         </a>
       </main>
       <section class="contact-section">
-        <div class="contact-left">
-          <h2>
-            Let's
-            <br />
-            work
-            <br />
-            <span class="ghost">together</span>
-          </h2>
-        </div>
+        <div class="contact-left"><h2>Let's<br />work<br /><span class="ghost">together</span></h2></div>
         <div class="contact-right">
           <p>Let's create something epic! Ready to level up your game? Let's make it happen!</p>
           <a class="contact-email" href="mailto:ankurmadholya01@gmail.com">ankurmadholya01@gmail.com</a>
@@ -2192,94 +2006,38 @@
     <div id="page-about" class="page">
       <section class="about-intro">
         <div class="about-left">
-          <h1>
-            About
-            <br />
-            <em>Me</em>
-          </h1>
-          <p class="about-bio">
-            I'm Ankur Madholiya - game designer, level designer, and 3D modeler dedicated to creating immersive worlds
-            and unforgettable experiences.
-          </p>
-          <p class="about-bio">
-            With expertise in gameplay mechanics, level design, and 3D artistry, I transform ideas into engaging
-            realities.
-          </p>
+          <h1>About<br /><em>Me</em></h1>
+          <p class="about-bio">I'm Ankur Madholiya - game designer, level designer, and 3D modeler dedicated to creating immersive worlds and unforgettable experiences.</p>
+          <p class="about-bio">With expertise in gameplay mechanics, level design, and 3D artistry, I transform ideas into engaging realities.</p>
           <div class="skills-row">
-            <span class="skill-tag">Level Design</span>
-            <span class="skill-tag">Game Design</span>
-            <span class="skill-tag">3D Modeling</span>
-            <span class="skill-tag">Horror</span>
-            <span class="skill-tag">Action Games</span>
-            <span class="skill-tag">2D Retro</span>
-            <span class="skill-tag">Hypercasual</span>
-            <span class="skill-tag">GDD Writing</span>
+            <span class="skill-tag">Level Design</span><span class="skill-tag">Game Design</span>
+            <span class="skill-tag">3D Modeling</span><span class="skill-tag">Horror</span>
+            <span class="skill-tag">Action Games</span><span class="skill-tag">2D Retro</span>
+            <span class="skill-tag">Hypercasual</span><span class="skill-tag">GDD Writing</span>
             <span class="skill-tag">UE5</span>
           </div>
         </div>
         <div class="about-right">
           <div class="grid2">
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS1.png" class="lb-src" alt="" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS2.png" class="lb-src" alt="" />
+            <img src="images/vss1.png" class="lb-src" alt="" />
+            <img src="images/vss2.png" class="lb-src" alt="" />
           </div>
         </div>
       </section>
       <section class="stats-row">
-        <div class="stat-cell">
-          <span class="stat-n">3</span>
-          <span class="stat-l">IGDC Awards</span>
-        </div>
-        <div class="stat-cell">
-          <span class="stat-n">4</span>
-          <span class="stat-l">Studios</span>
-        </div>
-        <div class="stat-cell">
-          <span class="stat-n">2+</span>
-          <span class="stat-l">Years Active</span>
-        </div>
+        <div class="stat-cell"><span class="stat-n">3</span><span class="stat-l">IGDC Awards</span></div>
+        <div class="stat-cell"><span class="stat-n">4</span><span class="stat-l">Studios</span></div>
+        <div class="stat-cell"><span class="stat-n">2+</span><span class="stat-l">Years Active</span></div>
       </section>
-      <section class="exp-block" style="padding: 0 2.5rem">
+      <section class="exp-block" style="padding:0 2.5rem">
         <h2>Experience</h2>
-        <div class="exp-item">
-          <div class="exp-yr">2025-Present</div>
-          <div>
-            <div class="exp-name">Boo Boo Games</div>
-            <div class="exp-role">Game Designer</div>
-          </div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-yr">2023-Present</div>
-          <div>
-            <div class="exp-name">Unfocus Studios</div>
-            <div class="exp-role">Game Designer</div>
-          </div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-yr">2025</div>
-          <div>
-            <div class="exp-name">Midknight Studios</div>
-            <div class="exp-role">Game Designer</div>
-          </div>
-        </div>
-        <div class="exp-item highlight">
-          <div class="exp-yr">2024</div>
-          <div>
-            <div class="exp-name">IGDC 2024</div>
-            <div class="exp-role">Achievement</div>
-            <p class="about-bio">PC/Console Game of the Year - Best Gameplay - Popular Choice Award</p>
-          </div>
-        </div>
+        <div class="exp-item"><div class="exp-yr">2025-2026</div><div><div class="exp-name">Boo Boo Games</div><div class="exp-role">Game Designer</div></div></div>
+        <div class="exp-item"><div class="exp-yr">2023-2025</div><div><div class="exp-name">Unfocus Studios</div><div class="exp-role">Game Designer</div></div></div>
+        <div class="exp-item"><div class="exp-yr">2023-2024</div><div><div class="exp-name">Midknight Studios</div><div class="exp-role">Game Designer</div></div></div>
+        <div class="exp-item highlight"><div class="exp-yr">2024</div><div><div class="exp-name">IGDC 2024</div><div class="exp-role">Achievement</div><p class="about-bio">PC/Console Game of the Year - Best Gameplay - Popular Choice Award</p></div></div>
       </section>
       <section class="contact-section">
-        <div class="contact-left">
-          <h2>
-            Let's
-            <br />
-            work
-            <br />
-            <span class="ghost">together</span>
-          </h2>
-        </div>
+        <div class="contact-left"><h2>Let's<br />work<br /><span class="ghost">together</span></h2></div>
         <div class="contact-right">
           <p>Let's create something epic! Ready to level up your game?</p>
           <a class="contact-email" href="mailto:ankurmadholya01@gmail.com">ankurmadholya01@gmail.com</a>
@@ -2301,131 +2059,65 @@
       <section class="proj-title-hero">
         <div class="proj-kicker">3D Action Game - 2024</div>
         <div class="proj-big-title">VENGEANCE</div>
-        <div class="proto-badge">
-          <div class="pl"></div>
-          <div class="pt">Prototype</div>
-          <div class="pl"></div>
-        </div>
+        <div class="proto-badge"><div class="pl"></div><div class="pt">Prototype</div><div class="pl"></div></div>
         <div class="proj-meta-bar">
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Year</span>
-            <span class="proj-meta-val">2024</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Role</span>
-            <span class="proj-meta-val">Lead Game Designer</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Engine</span>
-            <span class="proj-meta-val">Unreal Engine 5</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Award</span>
-            <span class="proj-meta-val">IGDC 2024 GOTY</span>
-          </div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Year</span><span class="proj-meta-val">2024</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Role</span><span class="proj-meta-val">Lead Game Designer</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Engine</span><span class="proj-meta-val">Unreal Engine 5</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Award</span><span class="proj-meta-val">IGDC 2024 GOTY</span></div>
         </div>
       </section>
       <main class="proj-body">
         <div class="sec-title">Overview</div>
         <section class="proj-overview">
           <div class="proj-ov-left">
-            <h2>
-              Project
-              <br />
-              Overview
-            </h2>
-            <p>
-              A brutal 3D action game built around a revenge-driven narrative with visceral, satisfying combat. Winner
-              of PC/Console Game of the Year at IGDC 2024, Best Gameplay, and Popular Choice.
-            </p>
-            <p>
-              Every room tells a chapter of the protagonist's descent. Level pacing, combat feedback loops, and
-              environmental storytelling are the pillars of the design.
-            </p>
+            <h2>Project<br />Overview</h2>
+            <p>A brutal 3D action game built around a revenge-driven narrative with visceral, satisfying combat. Winner of PC/Console Game of the Year at IGDC 2024, Best Gameplay, and Popular Choice.</p>
+            <p>Every room tells a chapter of the protagonist's descent. Level pacing, combat feedback loops, and environmental storytelling are the pillars of the design.</p>
             <div class="proj-tags">
-              <span class="proj-tag">Level Design</span>
-              <span class="proj-tag">Combat Systems</span>
-              <span class="proj-tag">Unreal Engine 5</span>
-              <span class="proj-tag">3D Modeling</span>
+              <span class="proj-tag">Level Design</span><span class="proj-tag">Combat Systems</span>
+              <span class="proj-tag">Unreal Engine 5</span><span class="proj-tag">3D Modeling</span>
               <span class="proj-tag">Narrative</span>
             </div>
           </div>
-          <video
-            controls
-            style="
-              width: 100%;
-              height: auto;
-              max-height: 500px;
-              object-fit: contain;
-              display: block;
-              background: #050510;
-            "
-          >
-            <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V1.mp4" type="video/mp4" />
+          <video controls autoplay muted loop style="width:100%;height:auto;max-height:500px;object-fit:contain;display:block;background:#050510;">
+            <source src="https://youtu.be/yee6krcg6EY" type="video/mp4" />
           </video>
         </section>
         <div class="details-strip">
-          <div class="ds-cell">
-            <div class="ds-label">Genre</div>
-            <div class="ds-val">3D Action</div>
-            <div class="ds-sub">Third-person combat</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Platform</div>
-            <div class="ds-val">PC / Console</div>
-            <div class="ds-sub">Unreal Engine 5</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Recognition</div>
-            <div class="ds-val">IGDC 2024</div>
-            <div class="ds-sub">GOTY - Best Gameplay - Popular Choice</div>
-          </div>
+          <div class="ds-cell"><div class="ds-label">Genre</div><div class="ds-val">3D Action</div><div class="ds-sub">Third-person combat</div></div>
+          <div class="ds-cell"><div class="ds-label">Platform</div><div class="ds-val">PC / Console</div><div class="ds-sub">Unreal Engine 5</div></div>
+          <div class="ds-cell"><div class="ds-label">Recognition</div><div class="ds-val">IGDC 2024</div><div class="ds-sub">GOTY - Best Gameplay - Popular Choice</div></div>
         </div>
         <section class="media-section">
           <div class="sec-title">Gameplay Screenshots</div>
           <div class="grid2">
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS1.png" class="lb-src media-img" alt="SS1" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS2.png" class="lb-src media-img" alt="SS2" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS3.png" class="lb-src media-img" alt="SS3" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS4.png" class="lb-src media-img" alt="SS4" />
+            <img src="images/vss1.png" class="lb-src media-img" alt="SS1" />
+            <img src="images/vss2.png" class="lb-src media-img" alt="SS2" />
+            <img src="images/vss3.png" class="lb-src media-img" alt="SS3" />
+            <img src="images/vss4.png" class="lb-src media-img" alt="SS4" />
           </div>
         </section>
         <section class="media-section">
           <div class="sec-title">Gameplay Video</div>
-          <video
-            controls
-            style="
-              width: 60%;
-              height: auto;
-              max-height: 500px;
-              object-fit: contain;
-              display: block;
-              background: #050510;
-            "
-          >
-            <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V2.mp4" type="video/mp4" />
+          <video controls autoplay muted loop style="width:60%;height:auto;max-height:500px;object-fit:contain;display:block;background:#050510;">
+            <source src="https://youtu.be/9UHA-v8_D0g" type="video/mp4" />
           </video>
         </section>
         <section class="media-section">
           <div class="sec-title">Level Design</div>
           <div class="grid3">
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS5.png" class="lb-src media-thumb" alt="SS5" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS6.png" class="lb-src media-thumb" alt="SS6" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\V SS7.png" class="lb-src media-thumb" alt="SS7" />
+            <img src="images/vss5.png" class="lb-src media-thumb" alt="SS5" />
+            <img src="images/vss6.png" class="lb-src media-thumb" alt="SS6" />
+            <img src="images/vss7.png" class="lb-src media-thumb" alt="SS7" />
           </div>
         </section>
       </main>
       <a class="next-project" href="#" data-page="proj-untitled">
-        <div>
-          <div class="np-label">Next Project</div>
-          <div class="np-title">Untitled</div>
-        </div>
+        <div><div class="np-label">Next Project</div><div class="np-title">Untitled</div></div>
         <div class="np-arrow">&rarr;</div>
       </a>
-      <footer>
-        <span class="ft">&copy; 2025 Ankur Madholiya</span>
-        <span class="ft">The Vengeance - 3D Action</span>
-      </footer>
+      <footer><span class="ft">&copy; 2025 Ankur Madholiya</span><span class="ft">The Vengeance - 3D Action</span></footer>
     </div>
 
     <!-- ═══════════════ UNTITLED ═══════════════ -->
@@ -2434,131 +2126,65 @@
       <section class="proj-title-hero">
         <div class="proj-kicker">3D Horror Game - 2024</div>
         <div class="proj-big-title">UNTITLED</div>
-        <div class="proto-badge">
-          <div class="pl"></div>
-          <div class="pt">Prototype</div>
-          <div class="pl"></div>
-        </div>
+        <div class="proto-badge"><div class="pl"></div><div class="pt">Prototype</div><div class="pl"></div></div>
         <div class="proj-meta-bar">
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Year</span>
-            <span class="proj-meta-val">2024</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Role</span>
-            <span class="proj-meta-val">Game &amp; Level Designer</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Engine</span>
-            <span class="proj-meta-val">Unreal Engine 5</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Genre</span>
-            <span class="proj-meta-val">Psychological Horror</span>
-          </div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Year</span><span class="proj-meta-val">2024</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Role</span><span class="proj-meta-val">Game &amp; Level Designer</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Engine</span><span class="proj-meta-val">Unreal Engine 5</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Genre</span><span class="proj-meta-val">Psychological Horror</span></div>
         </div>
       </section>
       <main class="proj-body">
         <div class="sec-title">Overview</div>
         <section class="proj-overview">
           <div class="proj-ov-left">
-            <h2>
-              Project
-              <br />
-              Overview
-            </h2>
-            <p>
-              A 3D psychological horror experience where darkness itself is the primary antagonist. The game relies on
-              atmosphere, sound, and environmental tension - no jump scares, just dread.
-            </p>
-            <p>
-              Every corridor was designed around maximum atmospheric tension with minimal explicit threat - the player's
-              imagination does the work.
-            </p>
+            <h2>Project<br />Overview</h2>
+            <p>A 3D psychological horror experience where darkness itself is the primary antagonist. The game relies on atmosphere, sound, and environmental tension - no jump scares, just dread.</p>
+            <p>Every corridor was designed around maximum atmospheric tension with minimal explicit threat - the player's imagination does the work.</p>
             <div class="proj-tags">
-              <span class="proj-tag">Psychological Horror</span>
-              <span class="proj-tag">Atmosphere</span>
-              <span class="proj-tag">UE5</span>
-              <span class="proj-tag">Level Design</span>
+              <span class="proj-tag">Psychological Horror</span><span class="proj-tag">Atmosphere</span>
+              <span class="proj-tag">UE5</span><span class="proj-tag">Level Design</span>
               <span class="proj-tag">Lighting</span>
             </div>
           </div>
-          <video
-            controls
-            style="
-              width: 100%;
-              height: auto;
-              max-height: 500px;
-              object-fit: contain;
-              display: block;
-              background: #050510;
-            "
-          >
-            <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U1.mp4" type="video/mp4" />
+          <video controls autoplay muted loop style="width:100%;height:auto;max-height:500px;object-fit:contain;display:block;background:#050510;">
+            <source src="https://youtu.be/Q9SPJxIpbqc" type="video/mp4" />
           </video>
         </section>
         <div class="details-strip">
-          <div class="ds-cell">
-            <div class="ds-label">Genre</div>
-            <div class="ds-val">3D Horror</div>
-            <div class="ds-sub">Psychological / Atmospheric</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Platform</div>
-            <div class="ds-val">PC</div>
-            <div class="ds-sub">Unreal Engine 5</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Focus</div>
-            <div class="ds-val">Tension Design</div>
-            <div class="ds-sub">Atmosphere - Pacing - Sound</div>
-          </div>
+          <div class="ds-cell"><div class="ds-label">Genre</div><div class="ds-val">3D Horror</div><div class="ds-sub">Psychological / Atmospheric</div></div>
+          <div class="ds-cell"><div class="ds-label">Platform</div><div class="ds-val">PC</div><div class="ds-sub">Unreal Engine 5</div></div>
+          <div class="ds-cell"><div class="ds-label">Focus</div><div class="ds-val">Tension Design</div><div class="ds-sub">Atmosphere - Pacing - Sound</div></div>
         </div>
         <section class="media-section">
           <div class="sec-title">Atmospheric Screenshots</div>
           <div class="grid2">
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U SS1.png" class="lb-src media-img" alt="SS1" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U SS2.png" class="lb-src media-img" alt="SS2" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U SS3.png" class="lb-src media-img" alt="SS3" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U SS4.png" class="lb-src media-img" alt="SS4" />
+            <img src="images/uss1.png" class="lb-src media-img" alt="SS1" />
+            <img src="images/uss2.png" class="lb-src media-img" alt="SS2" />
+            <img src="images/uss3.png" class="lb-src media-img" alt="SS3" />
+            <img src="images/uss4.png" class="lb-src media-img" alt="SS4" />
           </div>
         </section>
         <section class="media-section">
           <div class="sec-title">Gameplay Video</div>
-          <video
-            controls
-            style="
-              width: 60%;
-              height: auto;
-              max-height: 500px;
-              object-fit: contain;
-              display: block;
-              background: #050510;
-            "
-          >
-            <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U2.mp4" type="video/mp4" />
+          <video controls autoplay muted loop style="width:60%;height:auto;max-height:500px;object-fit:contain;display:block;background:#050510;">
+            <source src="https://youtu.be/IcGqUtRbV4Y" type="video/mp4" />
           </video>
         </section>
         <section class="media-section">
           <div class="sec-title">Level Design</div>
           <div class="grid3">
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U SS5.png" class="lb-src media-thumb" alt="SS5" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U SS6.png" class="lb-src media-thumb" alt="SS6" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\U SS7.png" class="lb-src media-thumb" alt="SS7" />
+            <img src="images/uss5.png" class="lb-src media-thumb" alt="SS5" />
+            <img src="images/uss6.png" class="lb-src media-thumb" alt="SS6" />
+            <img src="images/uss7.png" class="lb-src media-thumb" alt="SS7" />
           </div>
         </section>
       </main>
       <a class="next-project" href="#" data-page="proj-bhasmasur">
-        <div>
-          <div class="np-label">Next Project</div>
-          <div class="np-title">Wrath of Bhasmasur</div>
-        </div>
+        <div><div class="np-label">Next Project</div><div class="np-title">Wrath of Bhasmasur</div></div>
         <div class="np-arrow">&rarr;</div>
       </a>
-      <footer>
-        <span class="ft">&copy; 2025 Ankur Madholiya</span>
-        <span class="ft">Untitled - 3D Horror</span>
-      </footer>
+      <footer><span class="ft">&copy; 2025 Ankur Madholiya</span><span class="ft">Untitled - 3D Horror</span></footer>
     </div>
 
     <!-- ═══════════════ BHASMASUR ═══════════════ -->
@@ -2566,125 +2192,45 @@
       <a class="proj-back" href="#" data-page="work">&larr; Back to Work</a>
       <section class="proj-title-hero">
         <div class="proj-kicker">2D Arcade Game - 2023</div>
-        <div class="proj-big-title" style="font-size: clamp(3rem, 9vw, 11rem)">
-          WRATH OF
-          <br />
-          BHASMASUR
-        </div>
-        <div class="proto-badge">
-          <div class="pl"></div>
-          <div class="pt">Prototype</div>
-          <div class="pl"></div>
-        </div>
+        <div class="proj-big-title" style="font-size:clamp(3rem,9vw,11rem)">WRATH OF<br />BHASMASUR</div>
+        <div class="proto-badge"><div class="pl"></div><div class="pt">Prototype</div><div class="pl"></div></div>
         <div class="proj-meta-bar">
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Year</span>
-            <span class="proj-meta-val">2023</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Role</span>
-            <span class="proj-meta-val">Game Designer</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Type</span>
-            <span class="proj-meta-val">2D Retro Arcade</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Shown At</span>
-            <span class="proj-meta-val">IGDC 2023</span>
-          </div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Year</span><span class="proj-meta-val">2023</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Role</span><span class="proj-meta-val">Game Designer</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Type</span><span class="proj-meta-val">2D Retro Arcade</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Shown At</span><span class="proj-meta-val">IGDC 2023</span></div>
         </div>
       </section>
       <main class="proj-body">
         <div class="sec-title">Overview</div>
         <section class="proj-overview">
           <div class="proj-ov-left">
-            <h2>
-              Project
-              <br />
-              Overview
-            </h2>
-            <p>
-              "Wrath of Bhasmasure" is a third-person action game set in the mystical land of Maheshpur. Players dodge
-              fireballs and engage in an epic battle against the powerful demon Bhasmasure across four progressively
-              challenging levels.
-            </p>
-            <p>
-              Showcased at IGDC 2023. One of the earliest indie explorations of Indian mythological IP in the arcade
-              space.
-            </p>
+            <h2>Project<br />Overview</h2>
+            <p>"Wrath of Bhasmasure" is a third-person action game set in the mystical land of Maheshpur. Players dodge fireballs and engage in an epic battle against the powerful demon Bhasmasure across four progressively challenging levels.</p>
+            <p>Showcased at IGDC 2023. One of the earliest indie explorations of Indian mythological IP in the arcade space.</p>
             <div class="proj-tags">
-              <span class="proj-tag">2D Arcade</span>
-              <span class="proj-tag">Indian Mythology</span>
-              <span class="proj-tag">Retro</span>
-              <span class="proj-tag">Level Design</span>
+              <span class="proj-tag">2D Arcade</span><span class="proj-tag">Indian Mythology</span>
+              <span class="proj-tag">Retro</span><span class="proj-tag">Level Design</span>
             </div>
           </div>
-          <video
-            controls
-            style="
-              width: 100%;
-              height: auto;
-              max-height: 500px;
-              object-fit: contain;
-              display: block;
-              background: #050510;
-            "
-          >
-            <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\w1.mp4" type="video/mp4" />
+          <video controls autoplay muted loop style="width:100%;height:auto;max-height:500px;object-fit:contain;display:block;background:#050510;">
+            <source src="https://youtu.be/RW6PmDNQvOI" type="video/mp4" />
           </video>
         </section>
         <div class="details-strip">
-          <div class="ds-cell">
-            <div class="ds-label">Genre</div>
-            <div class="ds-val">2D Arcade</div>
-            <div class="ds-sub">Mythology - Retro</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Platform</div>
-            <div class="ds-val">PC</div>
-            <div class="ds-sub">2D Engine</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Showcased</div>
-            <div class="ds-val">IGDC 2023</div>
-            <div class="ds-sub">India Game Developer Conference</div>
-          </div>
+          <div class="ds-cell"><div class="ds-label">Genre</div><div class="ds-val">2D Arcade</div><div class="ds-sub">Mythology - Retro</div></div>
+          <div class="ds-cell"><div class="ds-label">Platform</div><div class="ds-val">PC</div><div class="ds-sub">2D Engine</div></div>
+          <div class="ds-cell"><div class="ds-label">Showcased</div><div class="ds-val">IGDC 2023</div><div class="ds-sub">India Game Developer Conference</div></div>
         </div>
         <section class="media-section">
           <div class="sec-title">Game Design Document</div>
-          <div style="border: 1px solid var(--border); padding: 2.5rem; margin-bottom: 1px">
-            <div
-              style="
-                font-family: var(--mono);
-                font-size: 0.6rem;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: #b8b8ff;
-                margin-bottom: 1rem;
-              "
-            >
-              Game Overview
-            </div>
-            <p style="font-size: 0.9rem; line-height: 1.85; color: #c4c0da; font-weight: 300; max-width: 680px">
-              "Wrath of Bhasmasure" is a third-person action game set in the mystical land of Maheshpur. Players
-              experience a gripping narrative where strategy, precision, and reflexes are key to survival.
-            </p>
+          <div style="border:1px solid var(--border);padding:2.5rem;margin-bottom:1px">
+            <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8b8ff;margin-bottom:1rem;">Game Overview</div>
+            <p style="font-size:0.9rem;line-height:1.85;color:#c4c0da;font-weight:300;max-width:680px">"Wrath of Bhasmasure" is a third-person action game set in the mystical land of Maheshpur. Players experience a gripping narrative where strategy, precision, and reflexes are key to survival.</p>
           </div>
-          <div style="border: 1px solid var(--border); border-top: none; padding: 2.5rem">
-            <div
-              style="
-                font-family: var(--mono);
-                font-size: 0.6rem;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: #b8b8ff;
-                margin-bottom: 1rem;
-              "
-            >
-              Objectives
-            </div>
-            <ul style="font-size: 0.88rem; line-height: 2; color: #c4c0da; font-weight: 300; padding-left: 1.2rem">
+          <div style="border:1px solid var(--border);border-top:none;padding:2.5rem">
+            <div style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8b8ff;margin-bottom:1rem;">Objectives</div>
+            <ul style="font-size:0.88rem;line-height:2;color:#c4c0da;font-weight:300;padding-left:1.2rem">
               <li>Survive each level by dodging fireballs for a set time.</li>
               <li>Enter portals to progress to subsequent levels.</li>
               <li>Defeat Bhasmasure by lowering his health to zero in the final level.</li>
@@ -2694,40 +2240,24 @@
         <section class="media-section">
           <div class="sec-title">Gameplay Screenshots</div>
           <div class="grid2">
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\1.png" class="lb-src media-thumb" alt="SS1" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\2.png" class="lb-src media-thumb" alt="SS2" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\3.png" class="lb-src media-thumb" alt="SS3" />
-            <img src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\4.png" class="lb-src media-thumb" alt="SS4" />
+            <img src="images/1.png" class="lb-src media-thumb" alt="SS1" />
+            <img src="images/2.png" class="lb-src media-thumb" alt="SS2" />
+            <img src="images/3.png" class="lb-src media-thumb" alt="SS3" />
+            <img src="images/4.png" class="lb-src media-thumb" alt="SS4" />
           </div>
         </section>
         <section class="media-section">
           <div class="sec-title">Gameplay Video</div>
-          <video
-            controls
-            style="
-              width: 60%;
-              height: auto;
-              max-height: 500px;
-              object-fit: contain;
-              display: block;
-              background: #050510;
-            "
-          >
-            <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\w2.mp4" type="video/mp4" />
+          <video controls autoplay muted loop style="width:60%;height:auto;max-height:500px;object-fit:contain;display:block;background:#050510;">
+            <source src="https://youtu.be/IwnloHwImGA" type="video/mp4" />
           </video>
         </section>
       </main>
       <a class="next-project" href="#" data-page="proj-voodoo">
-        <div>
-          <div class="np-label">Next Project</div>
-          <div class="np-title">Voodoo Concept</div>
-        </div>
+        <div><div class="np-label">Next Project</div><div class="np-title">Voodoo Concept</div></div>
         <div class="np-arrow">&rarr;</div>
       </a>
-      <footer>
-        <span class="ft">&copy; 2025 Ankur Madholiya</span>
-        <span class="ft">Wrath of Bhasmasur - 2D Arcade</span>
-      </footer>
+      <footer><span class="ft">&copy; 2025 Ankur Madholiya</span><span class="ft">Wrath of Bhasmasur - 2D Arcade</span></footer>
     </div>
 
     <!-- ═══════════════ VOODOO ═══════════════ -->
@@ -2735,156 +2265,68 @@
       <a class="proj-back" href="#" data-page="work">&larr; Back to Work</a>
       <section class="proj-title-hero">
         <div class="proj-kicker">Video / Concept - 2024</div>
-        <div class="proj-big-title">
-          VOODOO
-          <br />
-          CONCEPTS
-        </div>
+        <div class="proj-big-title">VOODOO<br />CONCEPTS</div>
         <div class="proj-meta-bar">
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Year</span>
-            <span class="proj-meta-val">2024</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Client</span>
-            <span class="proj-meta-val">Voodoo</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Games</span>
-            <span class="proj-meta-val">paper.io - Monster Survivor</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Type</span>
-            <span class="proj-meta-val">3D Hypercasual</span>
-          </div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Year</span><span class="proj-meta-val">2024</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Client</span><span class="proj-meta-val">Voodoo</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Games</span><span class="proj-meta-val">paper.io - Monster Survivor</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Type</span><span class="proj-meta-val">3D Hypercasual</span></div>
         </div>
       </section>
       <main class="proj-body">
         <div class="sec-title">Overview</div>
         <section class="proj-overview">
           <div class="proj-ov-left">
-            <h2>
-              Voodoo
-              <br />
-              Concept
-            </h2>
-            <p>
-              Worked with Voodoo for paper.io and Monster Survivor games. Concept video work exploring game feel, visual
-              language, and hypercasual mechanics.
-            </p>
-            <p>
-              Focused on tactile satisfaction, simple controls, and high-retention loop design for mobile hypercasual
-              audiences.
-            </p>
+            <h2>Voodoo<br />Concept</h2>
+            <p>Worked with Voodoo for paper.io and Monster Survivor games. Concept video work exploring game feel, visual language, and hypercasual mechanics.</p>
+            <p>Focused on tactile satisfaction, simple controls, and high-retention loop design for mobile hypercasual audiences.</p>
             <div class="proj-tags">
-              <span class="proj-tag">Hypercasual</span>
-              <span class="proj-tag">Mobile</span>
-              <span class="proj-tag">paper.io</span>
-              <span class="proj-tag">Monster Survivor</span>
+              <span class="proj-tag">Hypercasual</span><span class="proj-tag">Mobile</span>
+              <span class="proj-tag">paper.io</span><span class="proj-tag">Monster Survivor</span>
               <span class="proj-tag">3D Modeling</span>
             </div>
           </div>
-        
         </section>
         <div class="details-strip">
-          <div class="ds-cell">
-            <div class="ds-label">Client</div>
-            <div class="ds-val">Voodoo</div>
-            <div class="ds-sub">Mobile Publisher</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Platform</div>
-            <div class="ds-val">Mobile</div>
-            <div class="ds-sub">iOS / Android</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Format</div>
-            <div class="ds-val">Video Concept</div>
-            <div class="ds-sub">Pitch + Prototype</div>
-          </div>
+          <div class="ds-cell"><div class="ds-label">Client</div><div class="ds-val">Voodoo</div><div class="ds-sub">Mobile Publisher</div></div>
+          <div class="ds-cell"><div class="ds-label">Platform</div><div class="ds-val">Mobile</div><div class="ds-sub">iOS / Android</div></div>
+          <div class="ds-cell"><div class="ds-label">Format</div><div class="ds-val">Video Concept</div><div class="ds-sub">Pitch + Prototype</div></div>
         </div>
         <div class="sr-section-label">Concept Video Showreel</div>
-        <section
-          class="showreel"
-          id="showreel-voodoo"
-          data-list-title="Voodoo Media"
-          data-eyebrow="Concept Videos"
-          data-src="voodoo"
-          style="min-height: 60vh"
-        >
-      </section>
+        <section class="showreel" id="showreel-voodoo" data-list-title="Voodoo Media" data-eyebrow="Concept Videos" data-src="voodoo" style="min-height:60vh"></section>
         <section class="media-section">
           <div class="sec-title">paper.io - Concept Videos</div>
-
           <div class="levels-vid-grid">
-            <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-        <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\paper1.mp4" type="video/mp4">
-    </video>
-            <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-       <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\paper2.mp4" type="video/mp4">
-    </video>
-         <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-      <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\paper3.mp4" type="video/mp4">
-           </video>
-            <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-      <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\paper4.mp4" type="video/mp4">
-          </video>
-          <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-      <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\paper5.mp4" type="video/mp4">
-          </video>
-
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/kR_CAMtLYWo?feature=share" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/hA3KzLx0nCk?feature=share" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/ip3gZlz7XdM?feature=share" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtu.be/gN-5pGeIwr0" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/0fjnAsYuNfI?feature=share" type="video/mp4"></video>
           </div>
         </section>
-
         <section class="media-section">
           <div class="sec-title">Monster Survivor - Concept Videos</div>
           <div class="levels-vid-grid">
-              <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-        <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\monster1.mp4" type="video/mp4">
-    </video>
-
-            
-
-    <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-        <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\monster3.mp4" type="video/mp4">
-    </video>
-        
-       <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-        <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\monster4.mp4" type="video/mp4">
-    </video>
-     <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-        <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\monster5.mp4" type="video/mp4">
-    </video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/iyUA0cRr5bg?feature=share" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtu.be/ZVOccnEPovQ" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/WWDcGHnEFAc?feature=share" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtu.be/N3tp4nn779A" type="video/mp4"></video>
           </div>
         </section>
-
-
         <section class="media-section">
           <div class="sec-title">Other</div>
           <div class="levels-vid-grid">
-            <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-        <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\other1.mp4" type="video/mp4">
-    </video>
-            <video controls style="width:100%;height:460px;object-fit:cover ;display:block;">
-        <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\other2.mp4" type="video/mp4">
-    </video>
-            <video controls style="width:100%;height:460px;object-fit:cover;display:block;">
-        <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\other3.mp4" type="video/mp4"> 
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/irR3aUVkm6A?feature=share" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/I5tGibmNkz8?feature=share" type="video/mp4"></video>
+            <video controls autoplay muted loop style="width:100%;height:460px;object-fit:cover;display:block;"><source src="https://youtube.com/shorts/Kc0qPF2B6-k?feature=share" type="video/mp4"></video>
           </div>
         </section>
-        
       </main>
       <a class="next-project" href="#" data-page="proj-levels">
-        <div>
-          <div class="np-label">Next</div>
-          <div class="np-title">Level Designs</div>
-        </div>
+        <div><div class="np-label">Next</div><div class="np-title">Level Designs</div></div>
         <div class="np-arrow">&rarr;</div>
       </a>
-      <footer>
-        <span class="ft">&copy; 2025 Ankur Madholiya</span>
-        <span class="ft">Voodoo Concepts - Hypercasual</span>
-      </footer>
+      <footer><span class="ft">&copy; 2025 Ankur Madholiya</span><span class="ft">Voodoo Concepts - Hypercasual</span></footer>
     </div>
 
     <!-- ═══════════════ LEVEL DESIGNS ═══════════════ -->
@@ -2893,196 +2335,77 @@
       <section class="proj-title-hero">
         <div class="proj-kicker">3D Action Game - 2024</div>
         <div class="proj-big-title">Level Designs</div>
-        <div class="proto-badge">
-          <div class="pl"></div>
-          <div class="pt">Prototype</div>
-          <div class="pl"></div>
-        </div>
+        <div class="proto-badge"><div class="pl"></div><div class="pt">Prototype</div><div class="pl"></div></div>
         <div class="proj-meta-bar">
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Year</span>
-            <span class="proj-meta-val">2024</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Role</span>
-            <span class="proj-meta-val">Lead Game Designer</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Engine</span>
-            <span class="proj-meta-val">Unreal Engine 5</span>
-          </div>
-          <div class="proj-meta-item">
-            <span class="proj-meta-label">Award</span>
-            <span class="proj-meta-val">IGDC 2024 GOTY</span>
-          </div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Year</span><span class="proj-meta-val">2024</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Role</span><span class="proj-meta-val">Lead Game Designer</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Engine</span><span class="proj-meta-val">Unreal Engine 5</span></div>
+          <div class="proj-meta-item"><span class="proj-meta-label">Award</span><span class="proj-meta-val">IGDC 2024 GOTY</span></div>
         </div>
       </section>
       <main class="proj-body">
         <div class="sec-title">Overview</div>
         <section class="proj-overview">
           <div class="proj-ov-left">
-            <h2>
-              Project
-              <br />
-              Overview
-            </h2>
-            <p></p>
-            <p></p>
+            <h2>Project<br />Overview</h2>
+            <p></p><p></p>
             <div class="proj-tags">
-              <span class="proj-tag">Level Design</span>
-              <span class="proj-tag">Combat Systems</span>
-              <span class="proj-tag">Unreal Engine 5</span>
-              <span class="proj-tag">3D Modeling</span>
+              <span class="proj-tag">Level Design</span><span class="proj-tag">Combat Systems</span>
+              <span class="proj-tag">Unreal Engine 5</span><span class="proj-tag">3D Modeling</span>
             </div>
           </div>
-          <video
-            controls
-            data-group="levels"
-            style="
-              width: 100%;
-              height: auto;
-              max-height: 500px;
-              object-fit: contain;
-              display: block;
-              background: #050510;
-            "
-          >
-            <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo v6.mp4" type="video/mp4" />
+          <video controls data-group="levels" style="width:100%;height:auto;max-height:500px;object-fit:contain;display:block;background:#050510;">
+            <source src="https://youtu.be/aGB_Kr4l1aU" type="video/mp4" />
           </video>
         </section>
         <div class="details-strip">
-          <div class="ds-cell">
-            <div class="ds-label">Genre</div>
-            <div class="ds-val">3D Action</div>
-            <div class="ds-sub">Third-person combat</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Platform</div>
-            <div class="ds-val">PC / Console</div>
-            <div class="ds-sub">Unreal Engine 5</div>
-          </div>
-          <div class="ds-cell">
-            <div class="ds-label">Recognition</div>
-            <div class="ds-val">IGDC 2024</div>
-            <div class="ds-sub">GOTY - Best Gameplay - Popular Choice</div>
-          </div>
+          <div class="ds-cell"><div class="ds-label">Genre</div><div class="ds-val">3D Action</div><div class="ds-sub">Third-person combat</div></div>
+          <div class="ds-cell"><div class="ds-label">Platform</div><div class="ds-val">PC / Console</div><div class="ds-sub">Unreal Engine 5</div></div>
+          <div class="ds-cell"><div class="ds-label">Recognition</div><div class="ds-val">IGDC 2024</div><div class="ds-sub">GOTY - Best Gameplay - Popular Choice</div></div>
         </div>
         <section class="media-section">
           <div class="sec-title">Gameplay Videos</div>
           <div class="levels-vid-grid">
-            <video controls data-group="levels">
-              <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo v2.mp4" type="video/mp4" />
-            </video>
-            <video controls data-group="levels">
-              <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo v3.mp4" type="video/mp4" />
-            </video>
-            <video controls data-group="levels">
-              <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo v4.mp4" type="video/mp4" />
-            </video>
-            <video controls data-group="levels">
-              <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo v5.mp4" type="video/mp4" />
-            </video>
+            <video controls autoplay muted loop data-group="levels"><source src="https://youtu.be/kaa62Jrljt8" type="video/mp4" /></video>
+            <video controls autoplay muted loop data-group="levels"><source src="https://youtu.be/d1xQkGFEGQY" type="video/mp4" /></video>
+            <video controls autoplay muted loop data-group="levels"><source src="https://youtu.be/CScDgzXv0ao" type="video/mp4" /></video>
+            <video controls autoplay muted loop data-group="levels"><source src="https://youtu.be/xQO8iFhx25o" type="video/mp4" /></video>
           </div>
         </section>
         <section class="media-section">
           <div class="sec-title">Gameplay Video</div>
-          <video
-            controls
-            data-group="levels"
-            style="
-              width: 60%;
-              height: auto;
-              max-height: 500px;
-              object-fit: contain;
-              display: block;
-              background: #050510;
-            "
-          >
-            <source src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo v1.mp4" type="video/mp4" />
+          <video controls autoplay muted loop data-group="levels" style="width:60%;height:auto;max-height:500px;object-fit:contain;display:block;background:#050510;">
+            <source src="https://youtu.be/8QX83hyH6-o" type="video/mp4" />
           </video>
         </section>
         <section class="media-section">
           <div class="sec-title">Level Design</div>
           <div class="grid3">
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo1.jpeg"
-              class="lb-src media-thumb"
-              alt="SS1"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo2.jpeg"
-              class="lb-src media-thumb"
-              alt="SS2"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo3.jpeg"
-              class="lb-src media-thumb"
-              alt="SS3"
-            />
+            <img src="images/vodoo1.jpeg" class="lb-src media-thumb" alt="SS1" />
+            <img src="images/vodoo2.jpeg" class="lb-src media-thumb" alt="SS2" />
+            <img src="images/vodoo3.jpeg" class="lb-src media-thumb" alt="SS3" />
           </div>
         </section>
         <section class="media-section">
           <div class="sec-title">Additional Image Gallery</div>
           <div class="grid3">
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo4.jpeg"
-              class="lb-src media-thumb"
-              alt="SS4"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo5.jpeg"
-              class="lb-src media-thumb"
-              alt="SS5"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo6.jpeg"
-              class="lb-src media-thumb"
-              alt="SS6"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\model.png"
-              class="lb-src media-thumb"
-              alt="SS7"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo7.png"
-              class="lb-src media-thumb"
-              alt="SS8"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo8.png"
-              class="lb-src media-thumb"
-              alt="SS9"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\neutralzone.png"
-              class="lb-src media-thumb"
-              alt="SS10"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\TopViewBase.png"
-              class="lb-src media-thumb"
-              alt="SS11"
-            />
-            <img
-              src="C:\Users\MAITRI\OneDrive\Dokumen\Desktop\AMvds\vodoo12.png"
-              class="lb-src media-thumb"
-              alt="SS12"
-            />
+            <img src="images/vodoo4.jpeg" class="lb-src media-thumb" alt="SS4" />
+            <img src="images/vodoo5.jpeg" class="lb-src media-thumb" alt="SS5" />
+            <img src="images/vodoo6.jpeg" class="lb-src media-thumb" alt="SS6" />
+            <img src="images/model.png" class="lb-src media-thumb" alt="SS7" />
+            <img src="images/vodoo7.png" class="lb-src media-thumb" alt="SS8" />
+            <img src="images/vodoo8.png" class="lb-src media-thumb" alt="SS9" />
+            <img src="images/neutralzone.png" class="lb-src media-thumb" alt="SS10" />
+            <img src="images/topviewbase.png" class="lb-src media-thumb" alt="SS11" />
+            <img src="images/vodoo12.png" class="lb-src media-thumb" alt="SS12" />
           </div>
         </section>
       </main>
       <a class="next-project" href="#" data-page="proj-gdd">
-        <div>
-          <div class="np-label">Next</div>
-          <div class="np-title">Documentation</div>
-        </div>
+        <div><div class="np-label">Next</div><div class="np-title">Documentation</div></div>
         <div class="np-arrow">&rarr;</div>
       </a>
-      <footer>
-        <span class="ft">&copy; 2025 Ankur Madholiya</span>
-        <span class="ft">Level Designs - 3D Action</span>
-      </footer>
+      <footer><span class="ft">&copy; 2025 Ankur Madholiya</span><span class="ft">Level Designs - 3D Action</span></footer>
     </div>
 
     <!-- ═══════════════ GDD ═══════════════ -->
@@ -3093,46 +2416,28 @@
         <div class="proj-kicker">Game Design Documents - 2023-2025</div>
       </section>
       <main class="gdd-body">
-        <p class="gdd-intro">
-          GDDs developed across various projects, translating creative concepts into structured, production-ready plans.
-        </p>
+        <p class="gdd-intro">GDDs developed across various projects, translating creative concepts into structured, production-ready plans.</p>
         <div class="retro-divider"><h3>Project GDDs</h3></div>
         <div class="docs-grid">
-          <a
-            class="doc-card"
-            href="https://drive.google.com/file/d/1O7OxLd2nRfFejHNHjTn7WN7zgrsiiCFp/view"
-            target="_blank"
-          >
+          <a class="doc-card" href="https://drive.google.com/file/d/1O7OxLd2nRfFejHNHjTn7WN7zgrsiiCFp/view" target="_blank">
             <div class="doc-icon"><span>PDF</span></div>
             <div class="dc-name">The Vengeance</div>
             <div class="dc-type">GDD - 3D Action Game</div>
             <div class="dc-arrow">&nearr; Open on Google Drive</div>
           </a>
-          <a
-            class="doc-card"
-            href="https://drive.google.com/file/d/11AGVUZDlCs47kJaQ9JuV5I9mkLqwsnVV/view"
-            target="_blank"
-          >
+          <a class="doc-card" href="https://drive.google.com/file/d/11AGVUZDlCs47kJaQ9JuV5I9mkLqwsnVV/view" target="_blank">
             <div class="doc-icon"><span>PDF</span></div>
             <div class="dc-name">Untitled</div>
             <div class="dc-type">GDD - 3D Horror Game</div>
             <div class="dc-arrow">&nearr; Open on Google Drive</div>
           </a>
-          <a
-            class="doc-card"
-            href="https://drive.google.com/file/d/1nkfZKjC47TP8tAxiWIZhyaCW2BfWIgJf/view"
-            target="_blank"
-          >
+          <a class="doc-card" href="https://drive.google.com/file/d/1nkfZKjC47TP8tAxiWIZhyaCW2BfWIgJf/view" target="_blank">
             <div class="doc-icon"><span>PDF</span></div>
             <div class="dc-name">Wrath of Bhasmasur</div>
             <div class="dc-type">GDD - 2D Arcade Game</div>
             <div class="dc-arrow">&nearr; Open on Google Drive</div>
           </a>
-          <a
-            class="doc-card"
-            href="https://drive.google.com/drive/folders/180JuopawCI2e4xumRMxBmSKq6j_bmqn-"
-            target="_blank"
-          >
+          <a class="doc-card" href="https://drive.google.com/drive/folders/180JuopawCI2e4xumRMxBmSKq6j_bmqn-" target="_blank">
             <div class="doc-icon"><span>Folder</span></div>
             <div class="dc-name">Voodoo Concepts</div>
             <div class="dc-type">Drive Folder - Hypercasual Concepts</div>
@@ -3141,20 +2446,14 @@
         </div>
       </main>
       <a class="next-project" href="#" data-page="about">
-        <div>
-          <div class="np-label">Meet the Designer</div>
-          <div class="np-title">About Me</div>
-        </div>
+        <div><div class="np-label">Meet the Designer</div><div class="np-title">About Me</div></div>
         <div class="np-arrow">&rarr;</div>
       </a>
-      <footer>
-        <span class="ft">&copy; 2025 Ankur Madholiya</span>
-        <span class="ft">GDDs - Documentation</span>
-      </footer>
+      <footer><span class="ft">&copy; 2025 Ankur Madholiya</span><span class="ft">GDDs - Documentation</span></footer>
     </div>
 
     <script>
-      const ASSET_DIR = "C:\\Users\\MAITRI\\OneDrive\\Dokumen\\Desktop\\AMvds\\";
+      const ASSET_DIR = "./assets/";
 
       const SHOWREEL_PROJECTS = [
         {
@@ -3164,8 +2463,8 @@
           page: "proj-vengeance",
           engine: "Unreal Engine 5",
           award: "IGDC 2024 GOTY",
-          thumb: ASSET_DIR + "V SS1.png",
-          videos: [ASSET_DIR + "V1.mp4", ASSET_DIR + "V2.mp4"],
+          thumb: ASSET_DIR + "vss1.png",
+          videos: [ASSET_DIR + "v1.mp4", ASSET_DIR + "v2.mp4"],
         },
         {
           title: "Untitled",
@@ -3174,8 +2473,8 @@
           page: "proj-untitled",
           engine: "Unreal Engine 5",
           award: "",
-          thumb: ASSET_DIR + "U SS1.png",
-          videos: [ASSET_DIR + "U1.mp4", ASSET_DIR + "U2.mp4"],
+          thumb: ASSET_DIR + "uss1.png",
+          videos: [ASSET_DIR + "u1.mp4", ASSET_DIR + "u2.mp4"],
         },
         {
           title: "Wrath of Bhasmasur",
@@ -3195,7 +2494,11 @@
           engine: "Mobile Prototype",
           award: "",
           thumb: ASSET_DIR + "paperss.png",
-          videos: [ASSET_DIR + "paper1.mp4", ASSET_DIR + "paper2.mp4", ASSET_DIR + "paper3.mp4", ASSET_DIR + "paper4.mp4", ASSET_DIR + "monster1.mp4", ASSET_DIR + "monster2.mp4", ASSET_DIR + "monster3.mp4", ASSET_DIR + "monster4.mp4", ASSET_DIR + "monster5.mp4"],
+          videos: [
+            ASSET_DIR + "paper1.mp4", ASSET_DIR + "paper2.mp4", ASSET_DIR + "paper3.mp4",
+            ASSET_DIR + "paper4.mp4", ASSET_DIR + "monster1.mp4", ASSET_DIR + "monster3.mp4",
+            ASSET_DIR + "monster4.mp4", ASSET_DIR + "monster5.mp4"
+          ],
         },
         {
           title: "Level Designs",
@@ -3206,25 +2509,21 @@
           award: "IGDC 2024 GOTY",
           thumb: ASSET_DIR + "vodoo1.jpeg",
           videos: [
-            ASSET_DIR + "vodoo v6.mp4",
-            ASSET_DIR + "vodoo v1.mp4",
-            ASSET_DIR + "vodoo v2.mp4",
-            ASSET_DIR + "vodoo v3.mp4",
-            ASSET_DIR + "vodoo v4.mp4",
-            ASSET_DIR + "vodoo v5.mp4",
+            ASSET_DIR + "vodoov6.mp4", ASSET_DIR + "vodoov1.mp4",
+            ASSET_DIR + "vodoov2.mp4", ASSET_DIR + "vodoov3.mp4",
+            ASSET_DIR + "vodoov4.mp4", ASSET_DIR + "vodoov5.mp4",
           ],
+        },
+        {
+          title: "Other Videos",
+          type: "Additional Footage - 2024",
+          shortType: "Additional Footage - 2024",
+          page: "proj-voodoo",
+          engine: "Unreal Engine 5",
+          award: "",
+          thumb: ASSET_DIR + "otherss.png",
+          videos: [ASSET_DIR + "other1.mp4", ASSET_DIR + "other2.mp4", ASSET_DIR + "other3.mp4"],
         }
-        ,{
-            title:"Other Videos",
-            type:"Additional Footage - 2024",
-            shortType:"Additional Footage - 2024",
-            page:"proj-voodoo",
-            engine:"Unreal Engine 5",
-            award:"",
-            thumb:ASSET_DIR + "otherss.png",
-            videos:[ASSET_DIR + "other1.mp4", ASSET_DIR + "other2.mp4", ASSET_DIR + "other3.mp4"],
-          }
-        
       ];
 
       const VOODOO_SHOWREEL = [
@@ -3236,9 +2535,11 @@
           engine: "Mobile Prototype",
           award: "",
           thumb: ASSET_DIR + "paperss.png",
-          videos: [ASSET_DIR + "paper1.mp4", ASSET_DIR + "paper2.mp4", ASSET_DIR + "paper3.mp4", ASSET_DIR + "paper4.mp4", ASSET_DIR + "paper5.mp4"],
+          videos: [
+            ASSET_DIR + "paper1.mp4", ASSET_DIR + "paper2.mp4", ASSET_DIR + "paper3.mp4",
+            ASSET_DIR + "paper4.mp4", ASSET_DIR + "paper5.mp4"
+          ],
         },
-        
         {
           title: "Monster Survivor 01",
           type: "Hypercasual Concept - 2024",
@@ -3247,9 +2548,11 @@
           engine: "Mobile Prototype",
           award: "",
           thumb: ASSET_DIR + "monsterss.png",
-          videos: [ASSET_DIR + "monster1.mp4",  ASSET_DIR + "monster3.mp4", ASSET_DIR + "monster4.mp4", ASSET_DIR + "monster5.mp4"]
+          videos: [
+            ASSET_DIR + "monster1.mp4", ASSET_DIR + "monster3.mp4",
+            ASSET_DIR + "monster4.mp4", ASSET_DIR + "monster5.mp4"
+          ],
         },
-        
         {
           title: "Other Videos",
           type: "Hypercasual - 2024",
@@ -3260,35 +2563,28 @@
           thumb: ASSET_DIR + "otherss.png",
           videos: [ASSET_DIR + "other1.mp4", ASSET_DIR + "other2.mp4", ASSET_DIR + "other3.mp4"],
         },
-        
       ];
 
       function escapeHtml(v) {
-        return String(v).replace(
-          /[&<>"']/g,
-          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[c],
-        );
+        return String(v).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" })[c]);
       }
 
       function renderShowreel(sectionEl, projectsData) {
         const projects = projectsData || SHOWREEL_PROJECTS;
         const eyebrow = sectionEl.dataset.eyebrow || "All Projects";
         const title = sectionEl.dataset.listTitle || "Showreel";
-        const items = projects
-          .map((p, i) => {
-            const thumb = p.thumb
-              ? `<img src="${escapeHtml(p.thumb)}" alt="">`
-              : `<div class="sr-item-thumb-placeholder">Key Art</div>`;
-            const copy = p.videos.length ? "Random uploaded footage" : "Video coming soon";
-            return `<div class="sr-item ${i === 0 ? "active" : ""}" data-page-target="${escapeHtml(p.page)}" data-title="${escapeHtml(p.title)}" data-type="${escapeHtml(p.type)}" data-engine="${escapeHtml(p.engine)}" data-award="${escapeHtml(p.award)}" data-videos="${escapeHtml(p.videos.join("|"))}">
-            <span class="sr-item-num">${String(i + 1).padStart(2, "0")}</span>
+        const items = projects.map((p, i) => {
+          const thumb = p.thumb
+            ? `<img src="${escapeHtml(p.thumb)}" alt="">`
+            : `<div class="sr-item-thumb-placeholder">Key Art</div>`;
+          const copy = p.videos.length ? "Random uploaded footage" : "Video coming soon";
+          return `<div class="sr-item ${i === 0 ? "active" : ""}" data-page-target="${escapeHtml(p.page)}" data-title="${escapeHtml(p.title)}" data-type="${escapeHtml(p.type)}" data-engine="${escapeHtml(p.engine)}" data-award="${escapeHtml(p.award)}" data-videos="${escapeHtml(p.videos.join("|"))}">
+            <span class="sr-item-num">${String(i+1).padStart(2,"0")}</span>
             <div class="sr-item-thumb">${thumb}</div>
             <div class="sr-item-info"><div class="sr-item-name">${escapeHtml(p.title)}</div><div class="sr-item-type">${escapeHtml(p.shortType)}</div><div class="sr-duration">${escapeHtml(copy)}</div></div>
             <div class="sr-item-dot"></div>
           </div>`;
-          })
-          .join("");
-
+        }).join("");
         sectionEl.innerHTML = `
           <aside class="sr-list">
             <div class="sr-list-header"><div class="sr-list-eyebrow">${escapeHtml(eyebrow)}</div><div class="sr-list-title">${escapeHtml(title)}</div></div>
@@ -3324,654 +2620,189 @@
       renderShowreel(document.getElementById("showreel-voodoo"), VOODOO_SHOWREEL);
 
       /* ─── LOADER ─── */
-      const prog = document.getElementById("prog"),
-        ldrNum = document.getElementById("ldr-num"),
-        ldr = document.getElementById("loader");
-      let loadP = 0,
-        loaderStarted = false,
-        loaderAudioCtx = null,
-        loaderOsc = null,
-        loaderGain = null;
+      const prog = document.getElementById("prog"), ldrNum = document.getElementById("ldr-num"), ldr = document.getElementById("loader");
+      let loadP = 0, loaderStarted = false, loaderAudioCtx = null, loaderOsc = null, loaderGain = null;
       function startLoadingAudio() {
-        const c = loaderAudioCtx,
-          t = c.currentTime;
-        loaderOsc = c.createOscillator();
-        loaderGain = c.createGain();
-        loaderOsc.connect(loaderGain);
-        loaderGain.connect(c.destination);
-        loaderOsc.type = "square";
-        loaderOsc.frequency.setValueAtTime(160, t);
-        loaderGain.gain.setValueAtTime(0.0001, t);
-        loaderGain.gain.exponentialRampToValueAtTime(0.018, t + 0.05);
+        const c = loaderAudioCtx, t = c.currentTime;
+        loaderOsc = c.createOscillator(); loaderGain = c.createGain();
+        loaderOsc.connect(loaderGain); loaderGain.connect(c.destination);
+        loaderOsc.type = "square"; loaderOsc.frequency.setValueAtTime(160, t);
+        loaderGain.gain.setValueAtTime(0.0001, t); loaderGain.gain.exponentialRampToValueAtTime(0.018, t + 0.05);
         loaderOsc.start(t);
       }
       function updateLoadingAudio(p) {
         if (!loaderAudioCtx || !loaderOsc) return;
-        const notes = [160, 220, 260, 330, 390, 520, 660, 780];
-        const i = Math.floor(p / 13) % notes.length;
-        loaderOsc.frequency.setValueAtTime(notes[i], loaderAudioCtx.currentTime);
+        const notes = [160,220,260,330,390,520,660,780];
+        loaderOsc.frequency.setValueAtTime(notes[Math.floor(p/13) % notes.length], loaderAudioCtx.currentTime);
       }
       function stopLoadingAudio() {
         if (!loaderAudioCtx || !loaderOsc || !loaderGain) return;
         const t = loaderAudioCtx.currentTime;
         loaderGain.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
-        loaderOsc.stop(t + 0.15);
-        loaderOsc = null;
-        loaderGain = null;
+        loaderOsc.stop(t + 0.15); loaderOsc = null; loaderGain = null;
       }
       function startLoader() {
-        if (loaderStarted) return;
-        loaderStarted = true;
+        if (loaderStarted) return; loaderStarted = true;
         loaderAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        loaderAudioCtx.resume();
-        startLoadingAudio();
+        loaderAudioCtx.resume(); startLoadingAudio();
         const iv = setInterval(() => {
           loadP = Math.min(loadP + Math.floor(Math.random() * 9 + 4), 100);
-          prog.style.width = loadP + "%";
-          ldrNum.textContent = String(loadP).padStart(3, "0");
+          prog.style.width = loadP + "%"; ldrNum.textContent = String(loadP).padStart(3,"0");
           updateLoadingAudio(loadP);
-          if (loadP >= 100) {
-            clearInterval(iv);
-            stopLoadingAudio();
-            setTimeout(() => ldr.classList.add("gone"), 300);
-          }
+          if (loadP >= 100) { clearInterval(iv); stopLoadingAudio(); setTimeout(() => ldr.classList.add("gone"), 300); }
         }, 55);
       }
       document.addEventListener("pointerdown", startLoader, { once: true });
       document.addEventListener("keydown", startLoader, { once: true });
 
       /* ─── CURSOR ─── */
-      const dot = document.getElementById("cur-dot"),
-        circle = document.getElementById("cur-circle");
-      let mx = 0,
-        my = 0,
-        cx = 0,
-        cy = 0;
-      document.addEventListener("mousemove", (e) => {
-        mx = e.clientX;
-        my = e.clientY;
-        dot.style.left = mx + "px";
-        dot.style.top = my + "px";
-      });
-      (function animCursor() {
-        cx += (mx - cx) * 0.1;
-        cy += (my - cy) * 0.1;
-        circle.style.left = cx + "px";
-        circle.style.top = cy + "px";
-        requestAnimationFrame(animCursor);
-      })();
+      const dot = document.getElementById("cur-dot"), circle = document.getElementById("cur-circle");
+      let mx = 0, my = 0, cx = 0, cy = 0;
+      document.addEventListener("mousemove", (e) => { mx = e.clientX; my = e.clientY; dot.style.left = mx+"px"; dot.style.top = my+"px"; });
+      (function animCursor() { cx += (mx-cx)*0.1; cy += (my-cy)*0.1; circle.style.left = cx+"px"; circle.style.top = cy+"px"; requestAnimationFrame(animCursor); })();
       document.addEventListener("mouseover", (e) => {
-        document.body.classList.toggle(
-          "hovering",
-          !!e.target.closest(".work-card,.work-item,.proj-back,.next-project,.doc-card,.sr-item,.sr-view"),
-        );
+        document.body.classList.toggle("hovering", !!e.target.closest(".work-card,.work-item,.proj-back,.next-project,.doc-card,.sr-item,.sr-view"));
       });
 
       /* ─── NAVIGATION ─── */
-      let currentPage = "home",
-        isNavigating = false;
-      const PAGE_TITLES = {
-        "proj-vengeance": "VENGEANCE",
-        "proj-untitled": "UNTITLED",
-        "proj-bhasmasur": "WRATH OF BHASMASUR",
-        "proj-voodoo": "VOODOO CONCEPTS",
-        "proj-levels": "LEVEL DESIGNS",
-        "proj-gdd": "DOCS",
-        work: "WORK",
-        about: "ABOUT",
-        home: "HOME",
-      };
+      let currentPage = "home", isNavigating = false;
+      const PAGE_TITLES = { "proj-vengeance":"VENGEANCE","proj-untitled":"UNTITLED","proj-bhasmasur":"WRATH OF BHASMASUR","proj-voodoo":"VOODOO CONCEPTS","proj-levels":"LEVEL DESIGNS","proj-gdd":"DOCS",work:"WORK",about:"ABOUT",home:"HOME" };
       function buildChars(el, text) {
-        el.innerHTML = "";
-        [...text].forEach((ch) => {
-          const s = document.createElement("span");
-          s.className = "ot-char";
-          s.textContent = ch === " " ? "\u00a0" : ch;
-          el.appendChild(s);
-        });
+        el.innerHTML = ""; [...text].forEach((ch) => { const s = document.createElement("span"); s.className = "ot-char"; s.textContent = ch === " " ? "\u00a0" : ch; el.appendChild(s); });
       }
       function updateNavActive(page) {
         document.querySelectorAll(".nav-links a").forEach((a) => a.classList.remove("active"));
-        const key = page.startsWith("proj-") ? "work" : page;
-        const nl = document.getElementById("nl-" + key);
+        const nl = document.getElementById("nl-" + (page.startsWith("proj-") ? "work" : page));
         if (nl) nl.classList.add("active");
       }
-      function pauseAllVideos() {
-        document.querySelectorAll("video").forEach((v) => v.pause());
-      }
+      function pauseAllVideos() { document.querySelectorAll("video").forEach((v) => v.pause()); }
       function navigate(page, titleOverride) {
-        if (page === currentPage || isNavigating) return;
-        isNavigating = true;
-        pauseAllVideos();
-        const fromHome = currentPage === "home",
-          fromProject = currentPage.startsWith("proj-"),
-          isProject = page.startsWith("proj-");
-        const use2D = (fromHome || fromProject) && isProject;
+        if (page === currentPage || isNavigating) return; isNavigating = true; pauseAllVideos();
+        const use2D = (currentPage === "home" || currentPage.startsWith("proj-")) && page.startsWith("proj-");
         if (use2D) {
-          const overlay = document.getElementById("title-overlay"),
-            titleEl = document.getElementById("overlay-title");
+          const overlay = document.getElementById("title-overlay"), titleEl = document.getElementById("overlay-title");
           const label = titleOverride || PAGE_TITLES[page] || page.toUpperCase();
           buildChars(titleEl, label);
-          overlay.style.opacity = "1";
-          overlay.style.transition = "opacity .2s";
-          overlay.classList.add("active");
+          overlay.style.opacity = "1"; overlay.style.transition = "opacity .2s"; overlay.classList.add("active");
           requestAnimationFrame(() => {
             overlay.classList.add("sweeping");
             const chars = titleEl.querySelectorAll(".ot-char");
             chars.forEach((ch, i) => setTimeout(() => ch.classList.add("in"), 120 + i * 52));
             const holdAt = 120 + chars.length * 52 + 180;
-            setTimeout(
-              () =>
-                chars.forEach((ch, i) =>
-                  setTimeout(() => {
-                    ch.classList.remove("in");
-                    ch.classList.add("out");
-                  }, i * 32),
-                ),
-              holdAt,
-            );
+            setTimeout(() => chars.forEach((ch, i) => setTimeout(() => { ch.classList.remove("in"); ch.classList.add("out"); }, i * 32)), holdAt);
             const swapAt = holdAt + chars.length * 32 + 100;
             setTimeout(() => swapPage(page), swapAt);
             setTimeout(() => {
-              overlay.style.transition = "opacity .3s";
-              overlay.style.opacity = "0";
-              setTimeout(() => {
-                overlay.classList.remove("active", "sweeping");
-                titleEl.innerHTML = "";
-                isNavigating = false;
-                updateFisheye();
-                updateShowreelFisheye();
-              }, 320);
+              overlay.style.transition = "opacity .3s"; overlay.style.opacity = "0";
+              setTimeout(() => { overlay.classList.remove("active","sweeping"); titleEl.innerHTML = ""; isNavigating = false; updateFisheye(); updateShowreelFisheye(); }, 320);
             }, swapAt + 60);
           });
         } else {
-          const curtain = document.getElementById("curtain");
-          curtain.className = "";
-          void curtain.offsetWidth;
-          curtain.classList.add("slide-in");
-          setTimeout(() => {
-            swapPage(page);
-            curtain.classList.remove("slide-in");
-            void curtain.offsetWidth;
-            curtain.classList.add("slide-out");
-            isNavigating = false;
-            updateFisheye();
-            updateShowreelFisheye();
-          }, 450);
+          const curtain = document.getElementById("curtain"); curtain.className = ""; void curtain.offsetWidth; curtain.classList.add("slide-in");
+          setTimeout(() => { swapPage(page); curtain.classList.remove("slide-in"); void curtain.offsetWidth; curtain.classList.add("slide-out"); isNavigating = false; updateFisheye(); updateShowreelFisheye(); }, 450);
         }
       }
       function swapPage(page) {
         document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
         const target = document.getElementById("page-" + page);
-        if (target) {
-          target.classList.add("active");
-          window.scrollTo(0, 0);
-          // Reset images on this page so they fade in again on scroll
-          requestAnimationFrame(() => observePageImages(target));
-        }
-        updateNavActive(page);
-        currentPage = page;
+        if (target) { target.classList.add("active"); window.scrollTo(0,0); requestAnimationFrame(() => observePageImages(target)); }
+        updateNavActive(page); currentPage = page;
       }
       document.addEventListener("click", (e) => {
-        const el = e.target.closest("[data-page]");
-        if (!el) return;
-        e.preventDefault();
+        const el = e.target.closest("[data-page]"); if (!el) return; e.preventDefault();
         const titleNode = el.querySelector(".wi-title,.wc-name,.np-title");
-        const label = titleNode ? titleNode.textContent.trim().split("\n")[0].toUpperCase() : null;
-        navigate(el.dataset.page, label);
+        navigate(el.dataset.page, titleNode ? titleNode.textContent.trim().split("\n")[0].toUpperCase() : null);
       });
-      window.addEventListener(
-        "scroll",
-        () => {
-          document.getElementById("nav").classList.toggle("scrolled", window.scrollY > 60);
-          requestAnimationFrame(() => {
-            updateFisheye();
-            updateShowreelFisheye();
-          });
-        },
-        { passive: true },
-      );
+      window.addEventListener("scroll", () => { document.getElementById("nav").classList.toggle("scrolled", window.scrollY > 60); requestAnimationFrame(() => { updateFisheye(); updateShowreelFisheye(); }); }, { passive: true });
 
       /* ─── SFX ─── */
       const SFX = (() => {
         let ctx = null;
-        function getCtx() {
-          if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
-          return ctx;
-        }
-        function hoverTick() {
-          const c = getCtx(),
-            osc = c.createOscillator(),
-            gain = c.createGain();
-          osc.connect(gain);
-          gain.connect(c.destination);
-          osc.type = "triangle";
-          osc.frequency.setValueAtTime(520, c.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(980, c.currentTime + 0.08);
-          gain.gain.setValueAtTime(0.045, c.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.11);
-          osc.start(c.currentTime);
-          osc.stop(c.currentTime + 0.12);
-        }
-        function hoverDeep() {
-          const c = getCtx(),
-            low = c.createOscillator(),
-            lowGain = c.createGain();
-          low.connect(lowGain);
-          lowGain.connect(c.destination);
-          low.type = "sine";
-          low.frequency.setValueAtTime(95, c.currentTime);
-          low.frequency.exponentialRampToValueAtTime(180, c.currentTime + 0.16);
-          lowGain.gain.setValueAtTime(0.075, c.currentTime);
-          lowGain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.2);
-          low.start(c.currentTime);
-          low.stop(c.currentTime + 0.22);
-        }
-        function click() {
-          const c = getCtx(),
-            o1 = c.createOscillator(),
-            g1 = c.createGain();
-          o1.connect(g1);
-          g1.connect(c.destination);
-          o1.type = "sine";
-          o1.frequency.setValueAtTime(180, c.currentTime);
-          o1.frequency.exponentialRampToValueAtTime(60, c.currentTime + 0.18);
-          g1.gain.setValueAtTime(0.18, c.currentTime);
-          g1.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.22);
-          o1.start(c.currentTime);
-          o1.stop(c.currentTime + 0.23);
-        }
-        function navTick() {
-          const c = getCtx(),
-            osc = c.createOscillator(),
-            gain = c.createGain();
-          osc.connect(gain);
-          gain.connect(c.destination);
-          osc.type = "square";
-          osc.frequency.setValueAtTime(1100, c.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(1500, c.currentTime + 0.055);
-          gain.gain.setValueAtTime(0.032, c.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.075);
-          osc.start(c.currentTime);
-          osc.stop(c.currentTime + 0.085);
-        }
+        function getCtx() { if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)(); return ctx; }
+        function hoverTick() { const c=getCtx(),osc=c.createOscillator(),gain=c.createGain(); osc.connect(gain); gain.connect(c.destination); osc.type="triangle"; osc.frequency.setValueAtTime(520,c.currentTime); osc.frequency.exponentialRampToValueAtTime(980,c.currentTime+0.08); gain.gain.setValueAtTime(0.045,c.currentTime); gain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.11); osc.start(c.currentTime); osc.stop(c.currentTime+0.12); }
+        function hoverDeep() { const c=getCtx(),low=c.createOscillator(),lowGain=c.createGain(); low.connect(lowGain); lowGain.connect(c.destination); low.type="sine"; low.frequency.setValueAtTime(95,c.currentTime); low.frequency.exponentialRampToValueAtTime(180,c.currentTime+0.16); lowGain.gain.setValueAtTime(0.075,c.currentTime); lowGain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.2); low.start(c.currentTime); low.stop(c.currentTime+0.22); }
+        function click() { const c=getCtx(),o1=c.createOscillator(),g1=c.createGain(); o1.connect(g1); g1.connect(c.destination); o1.type="sine"; o1.frequency.setValueAtTime(180,c.currentTime); o1.frequency.exponentialRampToValueAtTime(60,c.currentTime+0.18); g1.gain.setValueAtTime(0.18,c.currentTime); g1.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.22); o1.start(c.currentTime); o1.stop(c.currentTime+0.23); }
+        function navTick() { const c=getCtx(),osc=c.createOscillator(),gain=c.createGain(); osc.connect(gain); gain.connect(c.destination); osc.type="square"; osc.frequency.setValueAtTime(1100,c.currentTime); osc.frequency.exponentialRampToValueAtTime(1500,c.currentTime+0.055); gain.gain.setValueAtTime(0.032,c.currentTime); gain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.075); osc.start(c.currentTime); osc.stop(c.currentTime+0.085); }
         return { hoverTick, hoverDeep, click, navTick };
       })();
-      function throttle(fn, ms) {
-        let last = 0;
-        return () => {
-          const now = Date.now();
-          if (now - last > ms) {
-            last = now;
-            fn();
-          }
-        };
-      }
-      const tickThrottle = throttle(() => SFX.hoverTick(), 120),
-        deepThrottle = throttle(() => SFX.hoverDeep(), 200),
-        navTickThrottle = throttle(() => SFX.navTick(), 100);
-      document.addEventListener("mouseover", (e) => {
-        if (e.target.closest(".work-card")) return deepThrottle();
-        if (e.target.closest(".work-item,.next-project,.doc-card,.proj-back,.sr-item")) return tickThrottle();
-        if (e.target.closest(".nav-links a,.nav-name")) return navTickThrottle();
-      });
-      document.addEventListener(
-        "click",
-        (e) => {
-          if (e.target.closest("[data-page],.doc-card[href],.contact-email,.social-link,.sr-view")) SFX.click();
-        },
-        true,
-      );
+      function throttle(fn, ms) { let last=0; return () => { const now=Date.now(); if (now-last>ms) { last=now; fn(); } }; }
+      const tickThrottle=throttle(()=>SFX.hoverTick(),120), deepThrottle=throttle(()=>SFX.hoverDeep(),200), navTickThrottle=throttle(()=>SFX.navTick(),100);
+      document.addEventListener("mouseover",(e)=>{ if(e.target.closest(".work-card")) return deepThrottle(); if(e.target.closest(".work-item,.next-project,.doc-card,.proj-back,.sr-item")) return tickThrottle(); if(e.target.closest(".nav-links a,.nav-name")) return navTickThrottle(); });
+      document.addEventListener("click",(e)=>{ if(e.target.closest("[data-page],.doc-card[href],.contact-email,.social-link,.sr-view")) SFX.click(); },true);
 
       /* ─── MUSIC ─── */
-      const bgMusic = document.getElementById("bg-music"),
-        musicBtn = document.getElementById("music-btn"),
-        iconSound = document.getElementById("icon-sound"),
-        iconMute = document.getElementById("icon-mute");
-      bgMusic.volume = 0;
-      let musicMuted = false,
-        fadeInterval = null,
-        started = false;
-      const MUSIC_VOLUME = 0.018;
-      function fadeTo(target, duration, cb) {
-        clearInterval(fadeInterval);
-        const start = bgMusic.volume,
-          diff = target - start,
-          steps = 40,
-          stepMs = duration / steps;
-        let count = 0;
-        fadeInterval = setInterval(() => {
-          count++;
-          bgMusic.volume = Math.min(1, Math.max(0, start + diff * (count / steps)));
-          if (count >= steps) {
-            clearInterval(fadeInterval);
-            bgMusic.volume = target;
-            if (cb) cb();
-          }
-        }, stepMs);
-      }
-      function startMusic() {
-        if (started) return;
-        bgMusic
-          .play()
-          .then(() => {
-            started = true;
-            if (!musicMuted) fadeTo(MUSIC_VOLUME, 3000);
-          })
-          .catch(() => {});
-      }
-      ["click", "keydown", "touchstart"].forEach((evt) => document.addEventListener(evt, startMusic, { once: true }));
-      musicBtn.addEventListener("click", () => {
-        musicMuted = !musicMuted;
-        if (musicMuted) {
-          fadeTo(0, 600, () => bgMusic.pause());
-          iconSound.style.display = "none";
-          iconMute.style.display = "block";
-          musicBtn.classList.add("muted");
-        } else {
-          bgMusic
-            .play()
-            .then(() => fadeTo(MUSIC_VOLUME, 1200))
-            .catch(() => {});
-          iconSound.style.display = "block";
-          iconMute.style.display = "none";
-          musicBtn.classList.remove("muted");
-        }
-      });
-      function duckMusic() {
-        fadeTo(0, 700);
-      }
-      function restoreMusic() {
-        if (!musicMuted && started) fadeTo(MUSIC_VOLUME, 1200);
-      }
-      document.addEventListener(
-        "play",
-        (e) => {
-          if (e.target.tagName === "VIDEO") duckMusic();
-        },
-        true,
-      );
-      document.addEventListener(
-        "pause",
-        (e) => {
-          if (e.target.tagName === "VIDEO") restoreMusic();
-        },
-        true,
-      );
-      document.addEventListener(
-        "ended",
-        (e) => {
-          if (e.target.tagName === "VIDEO") restoreMusic();
-        },
-        true,
-      );
+      const bgMusic=document.getElementById("bg-music"), musicBtn=document.getElementById("music-btn"), iconSound=document.getElementById("icon-sound"), iconMute=document.getElementById("icon-mute");
+      bgMusic.volume=0; let musicMuted=false, fadeInterval=null, started=false; const MUSIC_VOLUME=0.018;
+      function fadeTo(target,duration,cb) { clearInterval(fadeInterval); const start=bgMusic.volume,diff=target-start,steps=40,stepMs=duration/steps; let count=0; fadeInterval=setInterval(()=>{ count++; bgMusic.volume=Math.min(1,Math.max(0,start+diff*(count/steps))); if(count>=steps){ clearInterval(fadeInterval); bgMusic.volume=target; if(cb) cb(); } },stepMs); }
+      function startMusic() { if(started) return; bgMusic.play().then(()=>{ started=true; if(!musicMuted) fadeTo(MUSIC_VOLUME,3000); }).catch(()=>{}); }
+      ["click","keydown","touchstart"].forEach((evt)=>document.addEventListener(evt,startMusic,{once:true}));
+      musicBtn.addEventListener("click",()=>{ musicMuted=!musicMuted; if(musicMuted){ fadeTo(0,600,()=>bgMusic.pause()); iconSound.style.display="none"; iconMute.style.display="block"; musicBtn.classList.add("muted"); } else { bgMusic.play().then(()=>fadeTo(MUSIC_VOLUME,1200)).catch(()=>{}); iconSound.style.display="block"; iconMute.style.display="none"; musicBtn.classList.remove("muted"); } });
+      function duckMusic() { fadeTo(0,700); }
+      function restoreMusic() { if(!musicMuted&&started) fadeTo(MUSIC_VOLUME,1200); }
+      document.addEventListener("play",(e)=>{ if(e.target.tagName==="VIDEO") duckMusic(); },true);
+      document.addEventListener("pause",(e)=>{ if(e.target.tagName==="VIDEO") restoreMusic(); },true);
+      document.addEventListener("ended",(e)=>{ if(e.target.tagName==="VIDEO") restoreMusic(); },true);
 
       /* ─── VIDEO OBSERVERS ─── */
-      const videoObserver = new IntersectionObserver(
-        (entries) =>
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) entry.target.pause();
-          }),
-        { threshold: 0.15 },
-      );
-      document.querySelectorAll("video").forEach((v) => {
-        v.removeAttribute("autoplay");
-        v.autoplay = false;
-        videoObserver.observe(v);
-      });
+      const videoObserver=new IntersectionObserver((entries)=>entries.forEach((entry)=>{ if(!entry.isIntersecting) entry.target.pause(); }),{threshold:0.15});
+      document.querySelectorAll("video").forEach((v)=>{ v.removeAttribute("autoplay"); v.autoplay=false; videoObserver.observe(v); });
 
-      /* ─── LEVEL DESIGN VIDEO GROUP ─── */
+      /* ─── LEVEL VIDEO GROUP ─── */
       (function initLevelVideoGroup() {
-        const levelPage = document.getElementById("page-proj-levels");
-        if (!levelPage) return;
-        const levelVideos = levelPage.querySelectorAll('video[data-group="levels"]');
-        levelVideos.forEach((vid) => {
-          vid.addEventListener("play", () => {
-            levelVideos.forEach((other) => {
-              if (other !== vid) other.pause();
-            });
-          });
-        });
-        const levelObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) entry.target.pause();
-            });
-          },
-          { threshold: 0.1 },
-        );
-        levelVideos.forEach((v) => levelObserver.observe(v));
+        const levelPage=document.getElementById("page-proj-levels"); if(!levelPage) return;
+        const levelVideos=levelPage.querySelectorAll('video[data-group="levels"]');
+        levelVideos.forEach((vid)=>{ vid.addEventListener("play",()=>{ levelVideos.forEach((other)=>{ if(other!==vid) other.pause(); }); }); });
+        const levelObserver=new IntersectionObserver((entries)=>{ entries.forEach((entry)=>{ if(!entry.isIntersecting) entry.target.pause(); }); },{threshold:0.1});
+        levelVideos.forEach((v)=>levelObserver.observe(v));
       })();
 
       /* ─── FISHEYE ─── */
       function updateFisheye() {
-        const active = document.querySelector(".page.active");
-        if (!active) return;
-        const cards = active.querySelectorAll(".fisheye-card");
-        if (!cards.length) return;
-        const mid = window.innerHeight / 2;
-        cards.forEach((card) => {
-          const r = card.getBoundingClientRect(),
-            center = r.top + r.height / 2,
-            dist = (center - mid) / mid,
-            clamped = Math.max(-1, Math.min(1, dist)),
-            focus = 1 - Math.min(1, Math.abs(clamped)),
-            scale = 1 + focus * 0.085,
-            bend = clamped * -7,
-            lift = focus * 18,
-            opacity = 0.58 + focus * 0.42,
-            blur = (1 - focus) * 1.2;
-          card.style.transform = `translateZ(${lift}px) scale(${scale}) rotateX(${bend}deg)`;
-          card.style.filter = `blur(${blur}px) brightness(${0.78 + focus * 0.24}) saturate(${0.8 + focus * 0.35})`;
-          card.style.opacity = opacity;
-        });
+        const active=document.querySelector(".page.active"); if(!active) return;
+        const cards=active.querySelectorAll(".fisheye-card"); if(!cards.length) return;
+        const mid=window.innerHeight/2;
+        cards.forEach((card)=>{ const r=card.getBoundingClientRect(),center=r.top+r.height/2,dist=(center-mid)/mid,clamped=Math.max(-1,Math.min(1,dist)),focus=1-Math.min(1,Math.abs(clamped)),scale=1+focus*0.085,bend=clamped*-7,lift=focus*18,opacity=0.58+focus*0.42,blur=(1-focus)*1.2; card.style.transform=`translateZ(${lift}px) scale(${scale}) rotateX(${bend}deg)`; card.style.filter=`blur(${blur}px) brightness(${0.78+focus*0.24}) saturate(${0.8+focus*0.35})`; card.style.opacity=opacity; });
       }
       function updateShowreelFisheye() {
-        document.querySelectorAll(".page.active .sr-list").forEach((list) => {
-          const listRect = list.getBoundingClientRect(),
-            mid = listRect.top + listRect.height / 2;
-          list.querySelectorAll(".sr-item").forEach((item) => {
-            const r = item.getBoundingClientRect(),
-              center = r.top + r.height / 2,
-              dist = (center - mid) / Math.max(1, listRect.height / 2),
-              focus = 1 - Math.min(1, Math.abs(dist));
-            item.style.transform = `translateZ(${focus * 22}px) scale(${1 + focus * 0.055})`;
-            item.style.filter = `brightness(${0.78 + focus * 0.25}) saturate(${0.85 + focus * 0.25})`;
-            item.style.opacity = 0.62 + focus * 0.38;
-          });
-        });
+        document.querySelectorAll(".page.active .sr-list").forEach((list)=>{ const listRect=list.getBoundingClientRect(),mid=listRect.top+listRect.height/2; list.querySelectorAll(".sr-item").forEach((item)=>{ const r=item.getBoundingClientRect(),center=r.top+r.height/2,dist=(center-mid)/Math.max(1,listRect.height/2),focus=1-Math.min(1,Math.abs(dist)); item.style.transform=`translateZ(${focus*22}px) scale(${1+focus*0.055})`; item.style.filter=`brightness(${0.78+focus*0.25}) saturate(${0.85+focus*0.25})`; item.style.opacity=0.62+focus*0.38; }); });
       }
-      updateFisheye();
-      updateShowreelFisheye();
-      window.addEventListener("resize", () => {
-        updateFisheye();
-        updateShowreelFisheye();
-      });
-      document
-        .querySelectorAll(".sr-list")
-        .forEach((list) =>
-          list.addEventListener("scroll", () => requestAnimationFrame(updateShowreelFisheye), { passive: true }),
-        );
+      updateFisheye(); updateShowreelFisheye();
+      window.addEventListener("resize",()=>{ updateFisheye(); updateShowreelFisheye(); });
+      document.querySelectorAll(".sr-list").forEach((list)=>list.addEventListener("scroll",()=>requestAnimationFrame(updateShowreelFisheye),{passive:true}));
 
-      /* ─── REVEAL OBSERVER (existing elements) ─── */
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.style.animation = "pageReveal .6s cubic-bezier(.4,0,.2,1) both";
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 },
-      );
-      document.querySelectorAll(".exp-item,.doc-card,.stat-cell,.ds-cell,.proj-tag").forEach((el) => {
-        el.style.opacity = "0";
-        revealObserver.observe(el);
-      });
+      /* ─── REVEAL OBSERVER ─── */
+      const revealObserver=new IntersectionObserver((entries)=>{ entries.forEach((entry)=>{ if(entry.isIntersecting){ entry.target.style.animation="pageReveal .6s cubic-bezier(.4,0,.2,1) both"; revealObserver.unobserve(entry.target); } }); },{threshold:0.1});
+      document.querySelectorAll(".exp-item,.doc-card,.stat-cell,.ds-cell,.proj-tag").forEach((el)=>{ el.style.opacity="0"; revealObserver.observe(el); });
 
-      /* ─── IMAGE FADE-IN OBSERVER ─── */
-      const imgFadeObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("img-visible");
-              imgFadeObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.08, rootMargin: "0px 0px -30px 0px" },
-      );
-
-      function observePageImages(pageEl) {
-        // Find all .lb-src images inside this page that haven't faded in yet
-        pageEl.querySelectorAll(".lb-src").forEach((img, i) => {
-          if (!img.classList.contains("img-visible")) {
-            // Stagger: images in the same row (every 2 or 3) get a slight delay
-            const rowGroup = i % 3;
-            img.style.transitionDelay = rowGroup * 0.1 + "s";
-            imgFadeObserver.observe(img);
-          }
-        });
-      }
-
-      // Observe images on the initially active page (home)
+      /* ─── IMAGE FADE-IN ─── */
+      const imgFadeObserver=new IntersectionObserver((entries)=>{ entries.forEach((entry)=>{ if(entry.isIntersecting){ entry.target.classList.add("img-visible"); imgFadeObserver.unobserve(entry.target); } }); },{threshold:0.08,rootMargin:"0px 0px -30px 0px"});
+      function observePageImages(pageEl) { pageEl.querySelectorAll(".lb-src").forEach((img,i)=>{ if(!img.classList.contains("img-visible")){ img.style.transitionDelay=(i%3)*0.1+"s"; imgFadeObserver.observe(img); } }); }
       observePageImages(document.querySelector(".page.active"));
 
-      /* ─── SHOWREEL INITIALIZER ─── */
-      function getRandomVideo(item) {
-        const videos = (item.dataset.videos || "")
-          .split("|")
-          .map((v) => v.trim())
-          .filter(Boolean);
-        if (!videos.length) return "";
-        return videos[Math.floor(Math.random() * videos.length)];
-      }
+      /* ─── SHOWREEL ─── */
+      function getRandomVideo(item) { const videos=(item.dataset.videos||"").split("|").map((v)=>v.trim()).filter(Boolean); if(!videos.length) return ""; return videos[Math.floor(Math.random()*videos.length)]; }
       function initShowreel(sectionEl) {
-        const videoEl = sectionEl.querySelector("video"),
-          srcEl = sectionEl.querySelector("source"),
-          idleEl = sectionEl.querySelector(".sr-idle"),
-          labelEl = sectionEl.querySelector(".sr-now-playing"),
-          titleEl = sectionEl.querySelector(".sr-now-title"),
-          typeEl = sectionEl.querySelector(".sr-now-type"),
-          scrubEl = sectionEl.querySelector(".sr-scrub"),
-          fillEl = sectionEl.querySelector(".sr-scrub-fill"),
-          ctrlEl = sectionEl.querySelector(".sr-controls"),
-          playBtn = sectionEl.querySelector(".sr-play"),
-          pauseBtn = sectionEl.querySelector(".sr-pause"),
-          volumeEl = sectionEl.querySelector(".sr-volume input"),
-          engEl = sectionEl.querySelector(".sr-eng"),
-          awdEl = sectionEl.querySelector(".sr-awd"),
-          viewBtn = sectionEl.querySelector(".sr-view");
-        if (!videoEl) return;
-        let currentTarget = null;
-        videoEl.muted = true;
-        videoEl.volume = 0;
+        const videoEl=sectionEl.querySelector("video"),srcEl=sectionEl.querySelector("source"),idleEl=sectionEl.querySelector(".sr-idle"),labelEl=sectionEl.querySelector(".sr-now-playing"),titleEl=sectionEl.querySelector(".sr-now-title"),typeEl=sectionEl.querySelector(".sr-now-type"),scrubEl=sectionEl.querySelector(".sr-scrub"),fillEl=sectionEl.querySelector(".sr-scrub-fill"),ctrlEl=sectionEl.querySelector(".sr-controls"),playBtn=sectionEl.querySelector(".sr-play"),pauseBtn=sectionEl.querySelector(".sr-pause"),volumeEl=sectionEl.querySelector(".sr-volume input"),engEl=sectionEl.querySelector(".sr-eng"),awdEl=sectionEl.querySelector(".sr-awd"),viewBtn=sectionEl.querySelector(".sr-view");
+        if(!videoEl) return; let currentTarget=null; videoEl.muted=true; videoEl.volume=0;
         function loadItem(item) {
-          const src = getRandomVideo(item),
-            title = item.dataset.title || "",
-            type = item.dataset.type || "",
-            engine = item.dataset.engine || "-",
-            award = item.dataset.award || "-";
-          currentTarget = item.dataset.pageTarget || null;
-          sectionEl.querySelectorAll(".sr-item").forEach((i) => i.classList.remove("active"));
-          item.classList.add("active");
-          if (engEl) engEl.textContent = engine;
-          if (awdEl) awdEl.textContent = award || "-";
-          if (labelEl) labelEl.style.display = "flex";
-          if (titleEl) titleEl.textContent = title;
-          if (typeEl) typeEl.textContent = type;
-          if (!src) {
-            videoEl.pause();
-            videoEl.style.opacity = "0.2";
-            if (idleEl) {
-              idleEl.classList.remove("hidden");
-              idleEl.querySelector(".sr-idle-text").textContent = "No footage yet\nCheck back soon";
-            }
-            if (ctrlEl) ctrlEl.style.display = "none";
-            if (scrubEl) scrubEl.style.display = "none";
-            return;
-          }
-          if (ctrlEl) ctrlEl.style.display = "flex";
-          if (scrubEl) scrubEl.style.display = "block";
-          videoEl.style.opacity = "0";
-          videoEl.classList.add("fading");
-          setTimeout(() => {
-            srcEl.src = src;
-            videoEl.load();
-            videoEl.muted = Number(volumeEl ? volumeEl.value : 0) === 0;
-            videoEl.volume = Number(volumeEl ? volumeEl.value : 0);
-            videoEl
-              .play()
-              .then(() => {
-                videoEl.classList.remove("fading");
-                videoEl.style.opacity = "1";
-                if (idleEl) idleEl.classList.add("hidden");
-              })
-              .catch(() => {
-                videoEl.classList.remove("fading");
-                videoEl.style.opacity = "0.35";
-                if (idleEl) {
-                  idleEl.classList.remove("hidden");
-                  idleEl.querySelector(".sr-idle-text").textContent = "Click Play\nto start";
-                }
-              });
-          }, 320);
+          const src=getRandomVideo(item),title=item.dataset.title||"",type=item.dataset.type||"",engine=item.dataset.engine||"-",award=item.dataset.award||"-";
+          currentTarget=item.dataset.pageTarget||null;
+          sectionEl.querySelectorAll(".sr-item").forEach((i)=>i.classList.remove("active")); item.classList.add("active");
+          if(engEl) engEl.textContent=engine; if(awdEl) awdEl.textContent=award||"-";
+          if(labelEl) labelEl.style.display="flex"; if(titleEl) titleEl.textContent=title; if(typeEl) typeEl.textContent=type;
+          if(!src){ videoEl.pause(); videoEl.style.opacity="0.2"; if(idleEl){ idleEl.classList.remove("hidden"); idleEl.querySelector(".sr-idle-text").textContent="No footage yet\nCheck back soon"; } if(ctrlEl) ctrlEl.style.display="none"; if(scrubEl) scrubEl.style.display="none"; return; }
+          if(ctrlEl) ctrlEl.style.display="flex"; if(scrubEl) scrubEl.style.display="block";
+          videoEl.style.opacity="0"; videoEl.classList.add("fading");
+          setTimeout(()=>{ srcEl.src=src; videoEl.load(); videoEl.muted=Number(volumeEl?volumeEl.value:0)===0; videoEl.volume=Number(volumeEl?volumeEl.value:0); videoEl.play().then(()=>{ videoEl.classList.remove("fading"); videoEl.style.opacity="1"; if(idleEl) idleEl.classList.add("hidden"); }).catch(()=>{ videoEl.classList.remove("fading"); videoEl.style.opacity="0.35"; if(idleEl){ idleEl.classList.remove("hidden"); idleEl.querySelector(".sr-idle-text").textContent="Click Play\nto start"; } }); },320);
         }
-        if (playBtn)
-          playBtn.addEventListener("click", () =>
-            videoEl
-              .play()
-              .then(() => {
-                videoEl.style.opacity = "1";
-                if (idleEl) idleEl.classList.add("hidden");
-              })
-              .catch(() => {}),
-          );
-        if (pauseBtn) pauseBtn.addEventListener("click", () => videoEl.pause());
-        if (volumeEl)
-          volumeEl.addEventListener("input", () => {
-            const v = Number(volumeEl.value);
-            videoEl.volume = v;
-            videoEl.muted = v === 0;
-          });
-        videoEl.addEventListener("timeupdate", () => {
-          if (!videoEl.duration || !fillEl) return;
-          fillEl.style.width = (videoEl.currentTime / videoEl.duration) * 100 + "%";
-        });
-        if (scrubEl)
-          scrubEl.addEventListener("click", (e) => {
-            if (!videoEl.duration) return;
-            const r = scrubEl.getBoundingClientRect();
-            videoEl.currentTime = ((e.clientX - r.left) / r.width) * videoEl.duration;
-          });
-        if (viewBtn)
-          viewBtn.addEventListener("click", () => {
-            if (currentTarget) navigate(currentTarget);
-          });
-        sectionEl.querySelectorAll(".sr-item").forEach((item) => {
-          item.addEventListener("click", () => loadItem(item));
-          item.setAttribute("tabindex", "0");
-          item.addEventListener("keydown", (e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              loadItem(item);
-            }
-          });
-          item.addEventListener("mouseenter", () => tickThrottle && tickThrottle());
-        });
-        const autoObs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const first = sectionEl.querySelector(".sr-item");
-                if (first) loadItem(first);
-                autoObs.disconnect();
-              }
-            });
-          },
-          { threshold: 0.3 },
-        );
+        if(playBtn) playBtn.addEventListener("click",()=>videoEl.play().then(()=>{ videoEl.style.opacity="1"; if(idleEl) idleEl.classList.add("hidden"); }).catch(()=>{}));
+        if(pauseBtn) pauseBtn.addEventListener("click",()=>videoEl.pause());
+        if(volumeEl) volumeEl.addEventListener("input",()=>{ const v=Number(volumeEl.value); videoEl.volume=v; videoEl.muted=v===0; });
+        videoEl.addEventListener("timeupdate",()=>{ if(!videoEl.duration||!fillEl) return; fillEl.style.width=(videoEl.currentTime/videoEl.duration)*100+"%"; });
+        if(scrubEl) scrubEl.addEventListener("click",(e)=>{ if(!videoEl.duration) return; const r=scrubEl.getBoundingClientRect(); videoEl.currentTime=((e.clientX-r.left)/r.width)*videoEl.duration; });
+        if(viewBtn) viewBtn.addEventListener("click",()=>{ if(currentTarget) navigate(currentTarget); });
+        sectionEl.querySelectorAll(".sr-item").forEach((item)=>{ item.addEventListener("click",()=>loadItem(item)); item.setAttribute("tabindex","0"); item.addEventListener("keydown",(e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); loadItem(item); } }); item.addEventListener("mouseenter",()=>tickThrottle&&tickThrottle()); });
+        const autoObs=new IntersectionObserver((entries)=>{ entries.forEach((entry)=>{ if(entry.isIntersecting){ const first=sectionEl.querySelector(".sr-item"); if(first) loadItem(first); autoObs.disconnect(); } }); },{threshold:0.3});
         autoObs.observe(sectionEl);
       }
       document.querySelectorAll(".showreel").forEach(initShowreel);
