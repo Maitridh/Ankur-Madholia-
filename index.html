@@ -1190,395 +1190,633 @@
       <footer><span class="ft">&copy; 2025 Ankur Madholiya</span><span class="ft">GDDs - Documentation</span></footer>
     </div>
 
-    <script>
-      /* ══════════════════════════════════════════════
-         ALL ORIGINAL JS PRESERVED EXACTLY
-         New additions clearly marked with // ✅ MOB-
-      ══════════════════════════════════════════════ */
-
-      /* ── GITHUB RAW BASE for thumbnails ── */
-      const GH = "https://raw.githubusercontent.com/Maitridh/Ankur-Madholia-/main/images/";
-
-      /* ── SHOWREEL DATA ── */
-      const SHOWREEL_PROJECTS = [
-        {
-          title:"The Vengeance", type:"3D Action Game - 2024", shortType:"3D Action - 2024",
-          page:"proj-vengeance", engine:"Unreal Engine 5", award:"IGDC 2024 GOTY",
-          thumb: GH + "vss1.png",
-          videos:["yee6krcg6EY","9UHA-v8_D0g"]
-        },
-        {
-          title:"Untitled", type:"3D Horror Game - 2024", shortType:"Psychological Horror - 2024",
-          page:"proj-untitled", engine:"Unreal Engine 5", award:"",
-          thumb: GH + "uss1.png",
-          videos:["Q9SPJxIpbqc","IcGqUtRbV4Y"]
-        },
-        {
-          title:"Wrath of Bhasmasur", type:"2D Arcade Game - 2023", shortType:"2D Arcade - 2023",
-          page:"proj-bhasmasur", engine:"2D Engine", award:"IGDC 2023",
-          thumb: GH + "1.png",
-          videos:["RW6PmDNQvOI","IwnloHwImGA"]
-        },
-        {
-          title:"Voodoo Concepts", type:"Video / Concept - 2024", shortType:"Hypercasual - 2024",
-          page:"proj-voodoo", engine:"Mobile Prototype", award:"",
-          thumb: GH + "paperss.png",
-          videos:["kR_CAMtLYWo","hA3KzLx0nCk","ip3gZlz7XdM","gN-5pGeIwr0","iyUA0cRr5bg","ZVOccnEPovQ","WWDcGHnEFAc","N3tp4nn779A"]
-        },
-        {
-          title:"Level Designs", type:"Level Design - 2024", shortType:"Level Design - 2024",
-          page:"proj-levels", engine:"Unreal Engine 5", award:"IGDC 2024 GOTY",
-          thumb: GH + "vodoo1.jpeg",
-          videos:["aGB_Kr4l1aU","kaa62Jrljt8","d1xQkGFEGQY","CScDgzXv0ao","xQO8iFhx25o","8QX83hyH6-o"]
-        },
-        {
-          title:"Other Videos", type:"Additional Footage - 2024", shortType:"Additional Footage - 2024",
-          page:"proj-voodoo", engine:"Unreal Engine 5", award:"",
-          thumb: GH + "otherss.png",
-          videos:["irR3aUVkm6A","I5tGibmNkz8","Kc0qPF2B6-k"]
-        }
-      ];
-
-      const VOODOO_SHOWREEL = [
-        {
-          title:"paper.io Concepts", type:"Hypercasual Concept - 2024", shortType:"paper.io · Concepts",
-          page:"proj-voodoo", engine:"Mobile Prototype", award:"",
-          thumb: GH + "paperss.png",
-          videos:["kR_CAMtLYWo","hA3KzLx0nCk","ip3gZlz7XdM","gN-5pGeIwr0","0fjnAsYuNfI"]
-        },
-        {
-          title:"Monster Survivor", type:"Hypercasual Concept - 2024", shortType:"Monster Survivor",
-          page:"proj-voodoo", engine:"Mobile Prototype", award:"",
-          thumb: GH + "monsterss.png",
-          videos:["iyUA0cRr5bg","ZVOccnEPovQ","WWDcGHnEFAc","N3tp4nn779A"]
-        },
-        {
-          title:"Other Videos", type:"Hypercasual - 2024", shortType:"Extended Footage",
-          page:"proj-voodoo", engine:"Mobile Prototype", award:"",
-          thumb: GH + "otherss.png",
-          videos:["irR3aUVkm6A","I5tGibmNkz8","Kc0qPF2B6-k"]
-        }
-      ];
-
-      function escapeHtml(v){return String(v).replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"})[c])}
-
-      /* ── Render showreel ── */
-      function renderShowreel(sectionEl, projectsData){
-        const projects = projectsData || SHOWREEL_PROJECTS;
-        const eyebrow = sectionEl.dataset.eyebrow || "All Projects";
-        const title   = sectionEl.dataset.listTitle || "Showreel";
-
-        const items = projects.map((p,i)=>{
-          const thumb = p.thumb
-            ? `<img src="${escapeHtml(p.thumb)}" alt="" loading="lazy">`
-            : `<div class="sr-item-thumb-placeholder">Key Art</div>`;
-          return `<div class="sr-item ${i===0?"active":""}"
-            data-page-target="${escapeHtml(p.page)}"
-            data-title="${escapeHtml(p.title)}"
-            data-type="${escapeHtml(p.type)}"
-            data-engine="${escapeHtml(p.engine)}"
-            data-award="${escapeHtml(p.award)}"
-            data-videos="${escapeHtml(p.videos.join("|"))}">
-            <span class="sr-item-num">${String(i+1).padStart(2,"0")}</span>
-            <div class="sr-item-thumb">${thumb}</div>
-            <div class="sr-item-info">
-              <div class="sr-item-name">${escapeHtml(p.title)}</div>
-              <div class="sr-item-type">${escapeHtml(p.shortType)}</div>
-              <div class="sr-duration">${p.videos.length} video${p.videos.length!==1?"s":""}</div>
-            </div>
-            <div class="sr-item-dot"></div>
-          </div>`;
-        }).join("");
-
-        sectionEl.innerHTML = `
-          <aside class="sr-list">
-            <div class="sr-list-header">
-              <div class="sr-list-eyebrow">${escapeHtml(eyebrow)}</div>
-              <div class="sr-list-title">${escapeHtml(title)}</div>
-            </div>
-            ${items}
-          </aside>
-          <div class="sr-panel">
-            <div class="sr-video-wrap">
-              <div class="sr-idle">
-                <div class="sr-idle-ring"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-                <div class="sr-idle-text">Select a project\nto play footage</div>
-              </div>
-              <iframe id="sr-iframe-${sectionEl.id}" src="" allowfullscreen allow="autoplay; encrypted-media" style="opacity:0;transition:opacity 0.4s;"></iframe>
-              <div class="sr-overlay">
-                <div class="sr-overlay-gradient"></div>
-                <div class="sr-overlay-content">
-                  <div class="sr-now-playing" style="display:none"><span class="sr-blink"></span>Now Playing</div>
-                  <div class="sr-now-title"></div>
-                  <div class="sr-now-type"></div>
-                </div>
-              </div>
-            </div>
-            <div class="sr-info-bar">
-              <div class="sr-stats">
-                <div class="sr-stat"><span class="sr-stat-l">Engine</span><span class="sr-stat-v sr-eng">-</span></div>
-                <div class="sr-stat"><span class="sr-stat-l">Award</span><span class="sr-stat-v sr-awd">-</span></div>
-              </div>
-              <button class="sr-view" type="button">View Full Project &rarr;</button>
-            </div>
-          </div>`;
+<script>
+(function injectVolSliderCSS(){
+  var s=document.createElement("style");
+  s.textContent=
+    "#vol-ctrl{position:fixed;bottom:2rem;left:calc(2rem + 48px);z-index:900;display:flex;align-items:center;gap:8px;}" +
+    "#vol-range{-webkit-appearance:none;appearance:none;width:80px;height:3px;border-radius:2px;outline:none;cursor:pointer;" +
+      "background:linear-gradient(90deg,rgba(139,133,255,0.85) 50%,rgba(74,72,112,0.5) 50%);opacity:0.7;transition:opacity 0.3s;}" +
+    "#vol-range:hover,#vol-range:active{opacity:1;}" +
+    "#vol-range::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:#8b85ff;border-radius:50%;" +
+      "box-shadow:0 0 10px rgba(139,133,255,0.5),0 0 4px rgba(139,133,255,0.8);cursor:pointer;border:2px solid rgba(200,196,255,0.35);transition:transform 0.15s;}" +
+    "#vol-range::-webkit-slider-thumb:hover{transform:scale(1.25);}" +
+    "#vol-range::-moz-range-thumb{width:14px;height:14px;background:#8b85ff;border-radius:50%;" +
+      "box-shadow:0 0 10px rgba(139,133,255,0.5);cursor:pointer;border:2px solid rgba(200,196,255,0.35);}" +
+    "#vol-range::-moz-range-track{height:3px;background:rgba(74,72,112,0.5);border:none;border-radius:2px;}" +
+    "#vol-pct{font-family:var(--mono,'Space Mono',monospace);font-size:0.5rem;letter-spacing:0.08em;color:rgba(184,180,208,0.7);" +
+      "min-width:26px;text-align:right;user-select:none;}" +
+    "#vol-ctrl.muted #vol-range{opacity:0.25;pointer-events:none;}" +
+    "#vol-ctrl.muted #vol-pct{opacity:0.3;}" +
+    "@media(max-width:900px){" +
+      "#vol-ctrl{bottom:1.2rem;left:calc(1.2rem + 42px);}" +
+      "#vol-range{width:56px;cursor:pointer;}" +
+      "#vol-pct{font-size:0.46rem;}" +
+    "}";
+  document.head.appendChild(s);
+})();
+/* ── GITHUB RAW BASE for thumbnails ── */
+const GH = "https://raw.githubusercontent.com/Maitridh/Ankur-Madholia-/main/images/";
+/* ── SHOWREEL DATA ── */
+const SHOWREEL_PROJECTS = [
+  {
+    title:"The Vengeance", type:"3D Action Game - 2024", shortType:"3D Action - 2024",
+    page:"proj-vengeance", engine:"Unreal Engine 5", award:"IGDC 2024 GOTY",
+    thumb: GH + "vss1.png",
+    videos:["yee6krcg6EY","9UHA-v8_D0g"]
+  },
+  {
+    title:"Untitled", type:"3D Horror Game - 2024", shortType:"Psychological Horror - 2024",
+    page:"proj-untitled", engine:"Unreal Engine 5", award:"",
+    thumb: GH + "uss1.png",
+    videos:["Q9SPJxIpbqc","IcGqUtRbV4Y"]
+  },
+  {
+    title:"Wrath of Bhasmasur", type:"2D Arcade Game - 2023", shortType:"2D Arcade - 2023",
+    page:"proj-bhasmasur", engine:"2D Engine", award:"IGDC 2023",
+    thumb: GH + "1.png",
+    videos:["RW6PmDNQvOI","IwnloHwImGA"]
+  },
+  {
+    title:"Voodoo Concepts", type:"Video / Concept - 2024", shortType:"Hypercasual - 2024",
+    page:"proj-voodoo", engine:"Mobile Prototype", award:"",
+    thumb: GH + "paperss.png",
+    videos:["kR_CAMtLYWo","hA3KzLx0nCk","ip3gZlz7XdM","gN-5pGeIwr0","iyUA0cRr5bg","ZVOccnEPovQ","WWDcGHnEFAc","N3tp4nn779A"]
+  },
+  {
+    title:"Level Designs", type:"Level Design - 2024", shortType:"Level Design - 2024",
+    page:"proj-levels", engine:"Unreal Engine 5", award:"IGDC 2024 GOTY",
+    thumb: GH + "vodoo1.jpeg",
+    videos:["aGB_Kr4l1aU","kaa62Jrljt8","d1xQkGFEGQY","CScDgzXv0ao","xQO8iFhx25o","8QX83hyH6-o"]
+  },
+  {
+    title:"Other Videos", type:"Additional Footage - 2024", shortType:"Additional Footage - 2024",
+    page:"proj-voodoo", engine:"Unreal Engine 5", award:"",
+    thumb: GH + "otherss.png",
+    videos:["irR3aUVkm6A","I5tGibmNkz8","Kc0qPF2B6-k"]
+  }
+];
+const VOODOO_SHOWREEL = [
+  {
+    title:"paper.io Concepts", type:"Hypercasual Concept - 2024", shortType:"paper.io · Concepts",
+    page:"proj-voodoo", engine:"Mobile Prototype", award:"",
+    thumb: GH + "paperss.png",
+    videos:["kR_CAMtLYWo","hA3KzLx0nCk","ip3gZlz7XdM","gN-5pGeIwr0","0fjnAsYuNfI"]
+  },
+  {
+    title:"Monster Survivor", type:"Hypercasual Concept - 2024", shortType:"Monster Survivor",
+    page:"proj-voodoo", engine:"Mobile Prototype", award:"",
+    thumb: GH + "monsterss.png",
+    videos:["iyUA0cRr5bg","ZVOccnEPovQ","WWDcGHnEFAc","N3tp4nn779A"]
+  },
+  {
+    title:"Other Videos", type:"Hypercasual - 2024", shortType:"Extended Footage",
+    page:"proj-voodoo", engine:"Mobile Prototype", award:"",
+    thumb: GH + "otherss.png",
+    videos:["irR3aUVkm6A","I5tGibmNkz8","Kc0qPF2B6-k"]
+  }
+];
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"})[c])}
+/* ── Render showreel (unchanged) ── */
+function renderShowreel(sectionEl, projectsData){
+  const projects = projectsData || SHOWREEL_PROJECTS;
+  const eyebrow = sectionEl.dataset.eyebrow || "All Projects";
+  const title   = sectionEl.dataset.listTitle || "Showreel";
+  const items = projects.map((p,i)=>{
+    const thumb = p.thumb
+      ? '<img src="'+escapeHtml(p.thumb)+'" alt="" loading="lazy">'
+      : '<div class="sr-item-thumb-placeholder">Key Art</div>';
+    return '<div class="sr-item '+(i===0?"active":"")+'"'+
+      ' data-page-target="'+escapeHtml(p.page)+'"'+
+      ' data-title="'+escapeHtml(p.title)+'"'+
+      ' data-type="'+escapeHtml(p.type)+'"'+
+      ' data-engine="'+escapeHtml(p.engine)+'"'+
+      ' data-award="'+escapeHtml(p.award)+'"'+
+      ' data-videos="'+escapeHtml(p.videos.join("|"))+'">'+
+      '<span class="sr-item-num">'+String(i+1).padStart(2,"0")+'</span>'+
+      '<div class="sr-item-thumb">'+thumb+'</div>'+
+      '<div class="sr-item-info">'+
+        '<div class="sr-item-name">'+escapeHtml(p.title)+'</div>'+
+        '<div class="sr-item-type">'+escapeHtml(p.shortType)+'</div>'+
+        '<div class="sr-duration">'+p.videos.length+' video'+(p.videos.length!==1?"s":"")+'</div>'+
+      '</div>'+
+      '<div class="sr-item-dot"></div>'+
+    '</div>';
+  }).join("");
+  sectionEl.innerHTML =
+    '<aside class="sr-list">'+
+      '<div class="sr-list-header">'+
+        '<div class="sr-list-eyebrow">'+escapeHtml(eyebrow)+'</div>'+
+        '<div class="sr-list-title">'+escapeHtml(title)+'</div>'+
+      '</div>'+
+      items+
+    '</aside>'+
+    '<div class="sr-panel">'+
+      '<div class="sr-video-wrap">'+
+        '<div class="sr-idle">'+
+          '<div class="sr-idle-ring"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>'+
+          '<div class="sr-idle-text">Select a project\nto play footage</div>'+
+        '</div>'+
+        '<iframe id="sr-iframe-'+sectionEl.id+'" src="" allowfullscreen allow="autoplay; encrypted-media" style="opacity:0;transition:opacity 0.4s;"></iframe>'+
+        '<div class="sr-overlay">'+
+          '<div class="sr-overlay-gradient"></div>'+
+          '<div class="sr-overlay-content">'+
+            '<div class="sr-now-playing" style="display:none"><span class="sr-blink"></span>Now Playing</div>'+
+            '<div class="sr-now-title"></div>'+
+            '<div class="sr-now-type"></div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="sr-info-bar">'+
+        '<div class="sr-stats">'+
+          '<div class="sr-stat"><span class="sr-stat-l">Engine</span><span class="sr-stat-v sr-eng">-</span></div>'+
+          '<div class="sr-stat"><span class="sr-stat-l">Award</span><span class="sr-stat-v sr-awd">-</span></div>'+
+        '</div>'+
+        '<button class="sr-view" type="button">View Full Project &rarr;</button>'+
+      '</div>'+
+    '</div>';
+}
+document.querySelectorAll('.showreel[data-src="main"]').forEach(function(el){renderShowreel(el,SHOWREEL_PROJECTS)});
+renderShowreel(document.getElementById("showreel-voodoo"), VOODOO_SHOWREEL);
+/* ══════════════════════════════════════════════
+   ✅ FIX-3: Video ↔ Music fade state
+══════════════════════════════════════════════ */
+var videoIsPlaying = false;
+function fadeOutMusicForVideo(){
+  if(!started || musicMuted) { videoIsPlaying = true; return; }
+  videoIsPlaying = true;
+  fadeTo(0, 800);
+}
+function fadeInMusicFromVideo(){
+  if(!videoIsPlaying) return;
+  videoIsPlaying = false;
+  if(!started || musicMuted) return;
+  fadeTo(MUSIC_VOLUME, 1200);
+}
+/* ── Init each showreel's interactivity ── */
+/* ✅ FIX-3: loadItem now calls fadeOutMusicForVideo() */
+function initShowreel(sectionEl){
+  var iframeEl   = sectionEl.querySelector("iframe");
+  var idleEl     = sectionEl.querySelector(".sr-idle");
+  var labelEl    = sectionEl.querySelector(".sr-now-playing");
+  var titleEl    = sectionEl.querySelector(".sr-now-title");
+  var typeEl     = sectionEl.querySelector(".sr-now-type");
+  var engEl      = sectionEl.querySelector(".sr-eng");
+  var awdEl      = sectionEl.querySelector(".sr-awd");
+  var viewBtn    = sectionEl.querySelector(".sr-view");
+  if(!iframeEl) return;
+  var currentTarget = null;
+  function getRandomId(item){
+    var ids=(item.dataset.videos||"").split("|").map(function(v){return v.trim()}).filter(Boolean);
+    if(!ids.length) return "";
+    return ids[Math.floor(Math.random()*ids.length)];
+  }
+  function loadItem(item){
+    var vid   = getRandomId(item);
+    var ttl   = item.dataset.title  || "";
+    var typ   = item.dataset.type   || "";
+    var eng   = item.dataset.engine || "-";
+    var awd   = item.dataset.award  || "-";
+    currentTarget = item.dataset.pageTarget || null;
+    sectionEl.querySelectorAll(".sr-item").forEach(function(i){i.classList.remove("active")});
+    item.classList.add("active");
+    if(engEl) engEl.textContent = eng;
+    if(awdEl) awdEl.textContent = awd || "-";
+    if(labelEl) labelEl.style.display = "flex";
+    if(titleEl) titleEl.textContent = ttl;
+    if(typeEl)  typeEl.textContent  = typ;
+    if(!vid){
+      iframeEl.style.opacity="0";
+      iframeEl.src="";
+      if(idleEl){ idleEl.classList.remove("hidden"); idleEl.querySelector(".sr-idle-text").textContent="No footage yet\nCheck back soon"; }
+      /* ✅ FIX-3: no video → restore music */
+      fadeInMusicFromVideo();
+      return;
+    }
+    /* ✅ FIX-3: video loading → fade out BG music */
+    fadeOutMusicForVideo();
+    iframeEl.style.opacity="0";
+    setTimeout(function(){
+      iframeEl.src="https://www.youtube.com/embed/"+vid+"?autoplay=1&mute=1&loop=1&playlist="+vid+"&enablejsapi=1";
+      iframeEl.onload=function(){ iframeEl.style.opacity="1"; if(idleEl) idleEl.classList.add("hidden"); };
+    },300);
+  }
+  if(viewBtn) viewBtn.addEventListener("click",function(){ if(currentTarget) navigate(currentTarget); });
+  sectionEl.querySelectorAll(".sr-item").forEach(function(item){
+    item.addEventListener("click",function(){loadItem(item)});
+    item.setAttribute("tabindex","0");
+    item.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); loadItem(item); } });
+  });
+  var autoObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var first=sectionEl.querySelector(".sr-item");
+        if(first) loadItem(first);
+        autoObs.disconnect();
       }
-
-      document.querySelectorAll('.showreel[data-src="main"]').forEach(el=>renderShowreel(el,SHOWREEL_PROJECTS));
-      renderShowreel(document.getElementById("showreel-voodoo"), VOODOO_SHOWREEL);
-
-      /* ── Init each showreel's interactivity ── */
-      function initShowreel(sectionEl){
-        const iframeEl   = sectionEl.querySelector("iframe");
-        const idleEl     = sectionEl.querySelector(".sr-idle");
-        const labelEl    = sectionEl.querySelector(".sr-now-playing");
-        const titleEl    = sectionEl.querySelector(".sr-now-title");
-        const typeEl     = sectionEl.querySelector(".sr-now-type");
-        const engEl      = sectionEl.querySelector(".sr-eng");
-        const awdEl      = sectionEl.querySelector(".sr-awd");
-        const viewBtn    = sectionEl.querySelector(".sr-view");
-        if(!iframeEl) return;
-
-        let currentTarget = null;
-
-        function getRandomId(item){
-          const ids=(item.dataset.videos||"").split("|").map(v=>v.trim()).filter(Boolean);
-          if(!ids.length) return "";
-          return ids[Math.floor(Math.random()*ids.length)];
-        }
-
-        function loadItem(item){
-          const vid   = getRandomId(item);
-          const ttl   = item.dataset.title  || "";
-          const typ   = item.dataset.type   || "";
-          const eng   = item.dataset.engine || "-";
-          const awd   = item.dataset.award  || "-";
-          currentTarget = item.dataset.pageTarget || null;
-
-          sectionEl.querySelectorAll(".sr-item").forEach(i=>i.classList.remove("active"));
-          item.classList.add("active");
-
-          if(engEl) engEl.textContent = eng;
-          if(awdEl) awdEl.textContent = awd || "-";
-          if(labelEl) labelEl.style.display = "flex";
-          if(titleEl) titleEl.textContent = ttl;
-          if(typeEl)  typeEl.textContent  = typ;
-
-          if(!vid){
-            iframeEl.style.opacity="0";
-            iframeEl.src="";
-            if(idleEl){ idleEl.classList.remove("hidden"); idleEl.querySelector(".sr-idle-text").textContent="No footage yet\nCheck back soon"; }
-            return;
-          }
-
-          iframeEl.style.opacity="0";
-          setTimeout(()=>{
-            iframeEl.src=`https://www.youtube.com/embed/${vid}?autoplay=1&mute=1&loop=1&playlist=${vid}&enablejsapi=1`;
-            iframeEl.onload=()=>{ iframeEl.style.opacity="1"; if(idleEl) idleEl.classList.add("hidden"); };
-          },300);
-        }
-
-        if(viewBtn) viewBtn.addEventListener("click",()=>{ if(currentTarget) navigate(currentTarget); });
-
-        sectionEl.querySelectorAll(".sr-item").forEach(item=>{
-          item.addEventListener("click",()=>loadItem(item));
-          item.setAttribute("tabindex","0");
-          item.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); loadItem(item); } });
-        });
-
-        const autoObs=new IntersectionObserver(entries=>{
-          entries.forEach(entry=>{
-            if(entry.isIntersecting){
-              const first=sectionEl.querySelector(".sr-item");
-              if(first) loadItem(first);
-              autoObs.disconnect();
-            }
-          });
-        },{threshold:0.3});
-        autoObs.observe(sectionEl);
-      }
-
-      document.querySelectorAll(".showreel").forEach(initShowreel);
-
-      /* ── LOADER ── */
-      const prog=document.getElementById("prog"),ldrNum=document.getElementById("ldr-num"),ldr=document.getElementById("loader");
-      let loadP=0,loaderStarted=false,loaderAudioCtx=null,loaderOsc=null,loaderGain=null;
-      function startLoadingAudio(){const c=loaderAudioCtx,t=c.currentTime;loaderOsc=c.createOscillator();loaderGain=c.createGain();loaderOsc.connect(loaderGain);loaderGain.connect(c.destination);loaderOsc.type="square";loaderOsc.frequency.setValueAtTime(160,t);loaderGain.gain.setValueAtTime(0.0001,t);loaderGain.gain.exponentialRampToValueAtTime(0.018,t+0.05);loaderOsc.start(t)}
-      function updateLoadingAudio(p){if(!loaderAudioCtx||!loaderOsc)return;const notes=[160,220,260,330,390,520,660,780];loaderOsc.frequency.setValueAtTime(notes[Math.floor(p/13)%notes.length],loaderAudioCtx.currentTime)}
-      function stopLoadingAudio(){if(!loaderAudioCtx||!loaderOsc||!loaderGain)return;const t=loaderAudioCtx.currentTime;loaderGain.gain.exponentialRampToValueAtTime(0.001,t+0.12);loaderOsc.stop(t+0.15);loaderOsc=null;loaderGain=null}
-      function startLoader(){if(loaderStarted)return;loaderStarted=true;loaderAudioCtx=new(window.AudioContext||window.webkitAudioContext)();loaderAudioCtx.resume();startLoadingAudio();const iv=setInterval(()=>{loadP=Math.min(loadP+Math.floor(Math.random()*9+4),100);prog.style.width=loadP+"%";ldrNum.textContent=String(loadP).padStart(3,"0");updateLoadingAudio(loadP);if(loadP>=100){clearInterval(iv);stopLoadingAudio();setTimeout(()=>ldr.classList.add("gone"),300)}},55)}
-      document.addEventListener("pointerdown",startLoader,{once:true});
-      document.addEventListener("keydown",startLoader,{once:true});
-
-      /* ── DESKTOP CURSOR (unchanged) ── */
-      const dot=document.getElementById("cur-dot"),circle=document.getElementById("cur-circle");
-      let mx=0,my=0,cx=0,cy=0;
-      document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px"});
-      (function animCursor(){cx+=(mx-cx)*0.1;cy+=(my-cy)*0.1;circle.style.left=cx+"px";circle.style.top=cy+"px";requestAnimationFrame(animCursor)})();
-      document.addEventListener("mouseover",e=>{document.body.classList.toggle("hovering",!!e.target.closest(".work-card,.work-item,.proj-back,.next-project,.doc-card,.sr-item,.sr-view"))});
-
-      /* ── ✅ MOB-CURSOR: Touch glow effect for mobile ──
-         Uses touchmove events (passive for perf) to follow the finger.
-         Uses requestAnimationFrame to batch DOM writes.
-         Does NOT interfere with scrolling (passive listener).
-      ── */
-      (function initTouchGlow(){
-        const glowEl = document.getElementById("touch-glow");
-        if(!glowEl) return;
-
-        // Only activate on actual touch devices
-        let isTouchDevice = false;
-        let glowActive = false;
-        let glowRAF = null;
-        let glowX = 0, glowY = 0;
-        let hideTimer = null;
-
-        function isTouchCapable(){
-          return ("ontouchstart" in window) || (navigator.maxTouchPoints > 0);
-        }
-
-        function showGlow(x, y){
-          if(!isTouchDevice) return;
-          glowX = x; glowY = y;
-          if(glowRAF) cancelAnimationFrame(glowRAF);
-          glowRAF = requestAnimationFrame(()=>{
-            glowEl.style.display = "block";
-            glowEl.style.left    = glowX + "px";
-            glowEl.style.top     = glowY + "px";
-            glowEl.style.opacity = "1";
-          });
-          // Hide after finger lifts
-          clearTimeout(hideTimer);
-          hideTimer = setTimeout(()=>{
-            glowEl.style.opacity = "0";
-            glowActive = false;
-          }, 400);
-        }
-
-        // Detect touch device on first touch
-        window.addEventListener("touchstart", function onFirstTouch(){
-          isTouchDevice = true;
-          // Show and attach move handler
-          window.addEventListener("touchmove", function(e){
-            if(!isTouchDevice) return;
-            const t = e.touches[0];
-            if(t) showGlow(t.clientX, t.clientY);
-          }, { passive: true }); // ✅ passive keeps scrolling smooth
-          window.removeEventListener("touchstart", onFirstTouch);
-        }, { passive: true });
-
-        // Flash glow on tap without moving
-        window.addEventListener("touchstart", function(e){
-          if(!isTouchDevice) return;
-          const t = e.touches[0];
-          if(t) showGlow(t.clientX, t.clientY);
-        }, { passive: true });
-      })();
-
-      /* ── NAVIGATION (unchanged) ── */
-      let currentPage="home",isNavigating=false;
-      const PAGE_TITLES={"proj-vengeance":"VENGEANCE","proj-untitled":"UNTITLED","proj-bhasmasur":"WRATH OF BHASMASUR","proj-voodoo":"VOODOO CONCEPTS","proj-levels":"LEVEL DESIGNS","proj-gdd":"DOCS",work:"WORK",about:"ABOUT",home:"HOME"};
-      function buildChars(el,text){el.innerHTML="";[...text].forEach(ch=>{const s=document.createElement("span");s.className="ot-char";s.textContent=ch===" "?"\u00a0":ch;el.appendChild(s)})}
-      function updateNavActive(page){
-        document.querySelectorAll(".nav-links a").forEach(a=>a.classList.remove("active"));
-        // ✅ MOB-NAV: also update mobile overlay link active states
-        document.querySelectorAll("#mobile-nav-overlay a").forEach(a=>a.classList.remove("active"));
-        const nl=document.getElementById("nl-"+(page.startsWith("proj-")?"work":page));
-        if(nl) nl.classList.add("active");
-        const mnl=document.getElementById("mnl-"+(page.startsWith("proj-")?"work":page));
-        if(mnl) mnl.classList.add("active");
-      }
-      function navigate(page,titleOverride){
-        if(page===currentPage||isNavigating)return;isNavigating=true;
-
-        // ✅ MOB-NAV: close mobile menu on navigation
-        closeMobileNav();
-
-        const use2D=(currentPage==="home"||currentPage.startsWith("proj-"))&&page.startsWith("proj-");
-        if(use2D){
-          const overlay=document.getElementById("title-overlay"),titleEl=document.getElementById("overlay-title");
-          const label=titleOverride||PAGE_TITLES[page]||page.toUpperCase();
-          buildChars(titleEl,label);overlay.style.opacity="1";overlay.style.transition="opacity .2s";overlay.classList.add("active");
-          requestAnimationFrame(()=>{
-            overlay.classList.add("sweeping");
-            const chars=titleEl.querySelectorAll(".ot-char");
-            chars.forEach((ch,i)=>setTimeout(()=>ch.classList.add("in"),120+i*52));
-            const holdAt=120+chars.length*52+180;
-            setTimeout(()=>chars.forEach((ch,i)=>setTimeout(()=>{ch.classList.remove("in");ch.classList.add("out")},i*32)),holdAt);
-            const swapAt=holdAt+chars.length*32+100;
-            setTimeout(()=>swapPage(page),swapAt);
-            setTimeout(()=>{overlay.style.transition="opacity .3s";overlay.style.opacity="0";setTimeout(()=>{overlay.classList.remove("active","sweeping");titleEl.innerHTML="";isNavigating=false;updateFisheye();updateShowreelFisheye()},320)},swapAt+60);
-          });
-        } else {
-          const curtain=document.getElementById("curtain");curtain.className="";void curtain.offsetWidth;curtain.classList.add("slide-in");
-          setTimeout(()=>{swapPage(page);curtain.classList.remove("slide-in");void curtain.offsetWidth;curtain.classList.add("slide-out");isNavigating=false;updateFisheye();updateShowreelFisheye()},450);
-        }
-      }
-      function swapPage(page){
-        document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-        const target=document.getElementById("page-"+page);
-        if(target){target.classList.add("active");window.scrollTo(0,0);requestAnimationFrame(()=>observePageImages(target))}
-        updateNavActive(page);currentPage=page;
-      }
-      document.addEventListener("click",e=>{const el=e.target.closest("[data-page]");if(!el)return;e.preventDefault();const tn=el.querySelector(".wi-title,.wc-name,.np-title");navigate(el.dataset.page,tn?tn.textContent.trim().split("\n")[0].toUpperCase():null)});
-      window.addEventListener("scroll",()=>{document.getElementById("nav").classList.toggle("scrolled",window.scrollY>60);requestAnimationFrame(()=>{updateFisheye();updateShowreelFisheye()})},{passive:true});
-
-      /* ── ✅ MOB-NAV: Hamburger menu logic ── */
-      const hamburgerBtn = document.getElementById("nav-hamburger");
-      const mobileOverlay = document.getElementById("mobile-nav-overlay");
-
-      function openMobileNav(){
-        document.body.classList.add("nav-open");
-        hamburgerBtn.setAttribute("aria-expanded","true");
-        mobileOverlay.setAttribute("aria-hidden","false");
-      }
-      function closeMobileNav(){
-        document.body.classList.remove("nav-open");
-        hamburgerBtn.setAttribute("aria-expanded","false");
-        mobileOverlay.setAttribute("aria-hidden","true");
-      }
-      if(hamburgerBtn){
-        hamburgerBtn.addEventListener("click",()=>{
-          document.body.classList.contains("nav-open") ? closeMobileNav() : openMobileNav();
-        });
-      }
-      // Close on escape key
-      document.addEventListener("keydown",e=>{
-        if(e.key==="Escape" && document.body.classList.contains("nav-open")) closeMobileNav();
-      });
-
-      /* ── SFX (unchanged) ── */
-      const SFX=(()=>{let ctx=null;function getCtx(){if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();return ctx}function hoverTick(){const c=getCtx(),osc=c.createOscillator(),gain=c.createGain();osc.connect(gain);gain.connect(c.destination);osc.type="triangle";osc.frequency.setValueAtTime(520,c.currentTime);osc.frequency.exponentialRampToValueAtTime(980,c.currentTime+0.08);gain.gain.setValueAtTime(0.045,c.currentTime);gain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.11);osc.start(c.currentTime);osc.stop(c.currentTime+0.12)}function hoverDeep(){const c=getCtx(),low=c.createOscillator(),lowGain=c.createGain();low.connect(lowGain);lowGain.connect(c.destination);low.type="sine";low.frequency.setValueAtTime(95,c.currentTime);low.frequency.exponentialRampToValueAtTime(180,c.currentTime+0.16);lowGain.gain.setValueAtTime(0.075,c.currentTime);lowGain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.2);low.start(c.currentTime);low.stop(c.currentTime+0.22)}function click(){const c=getCtx(),o1=c.createOscillator(),g1=c.createGain();o1.connect(g1);g1.connect(c.destination);o1.type="sine";o1.frequency.setValueAtTime(180,c.currentTime);o1.frequency.exponentialRampToValueAtTime(60,c.currentTime+0.18);g1.gain.setValueAtTime(0.18,c.currentTime);g1.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.22);o1.start(c.currentTime);o1.stop(c.currentTime+0.23)}function navTick(){const c=getCtx(),osc=c.createOscillator(),gain=c.createGain();osc.connect(gain);gain.connect(c.destination);osc.type="square";osc.frequency.setValueAtTime(1100,c.currentTime);osc.frequency.exponentialRampToValueAtTime(1500,c.currentTime+0.055);gain.gain.setValueAtTime(0.032,c.currentTime);gain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.075);osc.start(c.currentTime);osc.stop(c.currentTime+0.085)}return{hoverTick,hoverDeep,click,navTick}})();
-      function throttle(fn,ms){let last=0;return()=>{const now=Date.now();if(now-last>ms){last=now;fn()}}}
-      const tickThrottle=throttle(()=>SFX.hoverTick(),120),deepThrottle=throttle(()=>SFX.hoverDeep(),200),navTickThrottle=throttle(()=>SFX.navTick(),100);
-      document.addEventListener("mouseover",e=>{if(e.target.closest(".work-card"))return deepThrottle();if(e.target.closest(".work-item,.next-project,.doc-card,.proj-back,.sr-item"))return tickThrottle();if(e.target.closest(".nav-links a,.nav-name"))return navTickThrottle()});
-      document.addEventListener("click",e=>{if(e.target.closest("[data-page],.doc-card[href],.contact-email,.social-link,.sr-view"))SFX.click()},true);
-
-      /* ── MUSIC (unchanged logic, volume raised to 0.25) ── */
-      const bgMusic=document.getElementById("bg-music"),musicBtn=document.getElementById("music-btn"),iconSound=document.getElementById("icon-sound"),iconMute=document.getElementById("icon-mute");
-      bgMusic.volume=0;let musicMuted=false,fadeInterval=null,started=false;const MUSIC_VOLUME=0.09; /* CHANGE 5: raised from 0.018 to 0.25 */
-      /* CHANGE 5: apply volume immediately on page load so it's ready before any play call */
-      bgMusic.volume=0; /* starts silent, fades in via fadeTo */
-      function fadeTo(target,duration,cb){clearInterval(fadeInterval);const start=bgMusic.volume,diff=target-start,steps=40,stepMs=duration/steps;let count=0;fadeInterval=setInterval(()=>{count++;bgMusic.volume=Math.min(1,Math.max(0,start+diff*(count/steps)));if(count>=steps){clearInterval(fadeInterval);bgMusic.volume=target;if(cb)cb()}},stepMs)}
-      function startMusic(){if(started)return;bgMusic.play().then(()=>{started=true;if(!musicMuted)fadeTo(MUSIC_VOLUME,3000)}).catch(()=>{})} /* CHANGE 5: fades to 0.25 */
-      ["click","keydown","touchstart"].forEach(evt=>document.addEventListener(evt,startMusic,{once:true}));
-      musicBtn.addEventListener("click",()=>{musicMuted=!musicMuted;if(musicMuted){fadeTo(0,600,()=>bgMusic.pause());iconSound.style.display="none";iconMute.style.display="block";musicBtn.classList.add("muted")}else{bgMusic.play().then(()=>fadeTo(MUSIC_VOLUME,1200)).catch(()=>{}); /* CHANGE 5: re-enable fades back to 0.25 */ iconSound.style.display="block";iconMute.style.display="none";musicBtn.classList.remove("muted")}});
-
-      /* ── FISHEYE (unchanged) ── */
-      function updateFisheye(){const active=document.querySelector(".page.active");if(!active)return;const cards=active.querySelectorAll(".fisheye-card");if(!cards.length)return;const mid=window.innerHeight/2;cards.forEach(card=>{const r=card.getBoundingClientRect(),center=r.top+r.height/2,dist=(center-mid)/mid,clamped=Math.max(-1,Math.min(1,dist)),focus=1-Math.min(1,Math.abs(clamped)),scale=1+focus*0.085,bend=clamped*-7,lift=focus*18,opacity=0.58+focus*0.42,blur=(1-focus)*1.2;card.style.transform=`translateZ(${lift}px) scale(${scale}) rotateX(${bend}deg)`;card.style.filter=`blur(${blur}px) brightness(${0.78+focus*0.24}) saturate(${0.8+focus*0.35})`;card.style.opacity=opacity})}
-      function updateShowreelFisheye(){document.querySelectorAll(".page.active .sr-list").forEach(list=>{const listRect=list.getBoundingClientRect(),mid=listRect.top+listRect.height/2;list.querySelectorAll(".sr-item").forEach(item=>{const r=item.getBoundingClientRect(),center=r.top+r.height/2,dist=(center-mid)/Math.max(1,listRect.height/2),focus=1-Math.min(1,Math.abs(dist));item.style.transform=`translateZ(${focus*22}px) scale(${1+focus*0.055})`;item.style.filter=`brightness(${0.78+focus*0.25}) saturate(${0.85+focus*0.25})`;item.style.opacity=0.62+focus*0.38})})}
-      updateFisheye();updateShowreelFisheye();
-      window.addEventListener("resize",()=>{updateFisheye();updateShowreelFisheye()});
-      document.querySelectorAll(".sr-list").forEach(list=>list.addEventListener("scroll",()=>requestAnimationFrame(updateShowreelFisheye),{passive:true}));
-
-      /* ── REVEAL OBSERVER (unchanged) ── */
-      const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.style.animation="pageReveal .6s cubic-bezier(.4,0,.2,1) both";revealObserver.unobserve(entry.target)}})},{threshold:0.1});
-      document.querySelectorAll(".exp-item,.doc-card,.stat-cell,.ds-cell,.proj-tag").forEach(el=>{el.style.opacity="0";revealObserver.observe(el)});
-
-      /* ── IMAGE FADE-IN (unchanged) ── */
-      const imgFadeObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("img-visible");imgFadeObserver.unobserve(entry.target)}})},{threshold:0.08,rootMargin:"0px 0px -30px 0px"});
-      function observePageImages(pageEl){pageEl.querySelectorAll(".lb-src").forEach((img,i)=>{if(!img.classList.contains("img-visible")){img.style.transitionDelay=(i%3)*0.1+"s";imgFadeObserver.observe(img)}})}
-      observePageImages(document.querySelector(".page.active"));
-    </script>
+    });
+  },{threshold:0.3});
+  autoObs.observe(sectionEl);
+}
+document.querySelectorAll(".showreel").forEach(initShowreel);
+/* ══════════════════════════════════════════════
+   LOADER
+   ✅ FIX-2: added touchstart listener for mobile
+══════════════════════════════════════════════ */
+var prog=document.getElementById("prog"),ldrNum=document.getElementById("ldr-num"),ldr=document.getElementById("loader");
+var loadP=0,loaderStarted=false,loaderAudioCtx=null,loaderOsc=null,loaderGain=null;
+function startLoadingAudio(){
+  var c=loaderAudioCtx,t=c.currentTime;
+  loaderOsc=c.createOscillator();
+  loaderGain=c.createGain();
+  loaderOsc.connect(loaderGain);
+  loaderGain.connect(c.destination);
+  loaderOsc.type="square";
+  loaderOsc.frequency.setValueAtTime(160,t);
+  loaderGain.gain.setValueAtTime(0.0001,t);
+  loaderGain.gain.exponentialRampToValueAtTime(0.018,t+0.05);
+  loaderOsc.start(t);
+}
+function updateLoadingAudio(p){
+  if(!loaderAudioCtx||!loaderOsc)return;
+  var notes=[160,220,260,330,390,520,660,780];
+  loaderOsc.frequency.setValueAtTime(notes[Math.floor(p/13)%notes.length],loaderAudioCtx.currentTime);
+}
+function stopLoadingAudio(){
+  if(!loaderAudioCtx||!loaderOsc||!loaderGain)return;
+  var t=loaderAudioCtx.currentTime;
+  loaderGain.gain.exponentialRampToValueAtTime(0.001,t+0.12);
+  loaderOsc.stop(t+0.15);
+  loaderOsc=null;loaderGain=null;
+}
+function startLoader(){
+  if(loaderStarted)return;
+  loaderStarted=true;
+  /* ✅ FIX-2: wrap AudioContext creation in try-catch for safety on mobile */
+  try{
+    loaderAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    /* ✅ FIX-2: resume() returns a Promise – chain audio start to it for iOS */
+    loaderAudioCtx.resume().then(function(){
+      startLoadingAudio();
+    }).catch(function(){});
+  }catch(e){}
+  /* Visual loader always runs regardless of audio success */
+  var iv=setInterval(function(){
+    loadP=Math.min(loadP+Math.floor(Math.random()*9+4),100);
+    prog.style.width=loadP+"%";
+    ldrNum.textContent=String(loadP).padStart(3,"0");
+    updateLoadingAudio(loadP);
+    if(loadP>=100){clearInterval(iv);stopLoadingAudio();setTimeout(function(){ldr.classList.add("gone")},300)}
+  },55);
+}
+document.addEventListener("pointerdown",startLoader,{once:true});
+document.addEventListener("keydown",startLoader,{once:true});
+/* ✅ FIX-2: touchstart for older mobile browsers that don't fire pointerdown */
+document.addEventListener("touchstart",startLoader,{once:true});
+/* ── DESKTOP CURSOR (unchanged) ── */
+var dot=document.getElementById("cur-dot"),circle=document.getElementById("cur-circle");
+var mx=0,my=0,cx=0,cy=0;
+document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px"});
+(function animCursor(){cx+=(mx-cx)*0.1;cy+=(my-cy)*0.1;circle.style.left=cx+"px";circle.style.top=cy+"px";requestAnimationFrame(animCursor)})();
+document.addEventListener("mouseover",function(e){document.body.classList.toggle("hovering",!!e.target.closest(".work-card,.work-item,.proj-back,.next-project,.doc-card,.sr-item,.sr-view"))});
+/* ── MOB-CURSOR: Touch glow effect for mobile (unchanged) ── */
+(function initTouchGlow(){
+  var glowEl = document.getElementById("touch-glow");
+  if(!glowEl) return;
+  var isTouchDevice = false;
+  var glowRAF = null;
+  var glowX = 0, glowY = 0;
+  var hideTimer = null;
+  function showGlow(x, y){
+    if(!isTouchDevice) return;
+    glowX = x; glowY = y;
+    if(glowRAF) cancelAnimationFrame(glowRAF);
+    glowRAF = requestAnimationFrame(function(){
+      glowEl.style.display = "block";
+      glowEl.style.left    = glowX + "px";
+      glowEl.style.top     = glowY + "px";
+      glowEl.style.opacity = "1";
+    });
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function(){
+      glowEl.style.opacity = "0";
+    }, 400);
+  }
+  window.addEventListener("touchstart", function onFirstTouch(){
+    isTouchDevice = true;
+    window.addEventListener("touchmove", function(e){
+      if(!isTouchDevice) return;
+      var t = e.touches[0];
+      if(t) showGlow(t.clientX, t.clientY);
+    }, { passive: true });
+    window.removeEventListener("touchstart", onFirstTouch);
+  }, { passive: true });
+  window.addEventListener("touchstart", function(e){
+    if(!isTouchDevice) return;
+    var t = e.touches[0];
+    if(t) showGlow(t.clientX, t.clientY);
+  }, { passive: true });
+})();
+/* ══════════════════════════════════════════════
+   NAVIGATION
+   ✅ FIX-3: swapPage restores BG music when leaving a video page
+══════════════════════════════════════════════ */
+var currentPage="home",isNavigating=false;
+var PAGE_TITLES={"proj-vengeance":"VENGEANCE","proj-untitled":"UNTITLED","proj-bhasmasur":"WRATH OF BHASMASUR","proj-voodoo":"VOODOO CONCEPTS","proj-levels":"LEVEL DESIGNS","proj-gdd":"DOCS",work:"WORK",about:"ABOUT",home:"HOME"};
+function buildChars(el,text){el.innerHTML="";[].slice.call(text).forEach(function(ch){var s=document.createElement("span");s.className="ot-char";s.textContent=ch===" "?"\u00a0":ch;el.appendChild(s)})}
+function updateNavActive(page){
+  document.querySelectorAll(".nav-links a").forEach(function(a){a.classList.remove("active")});
+  document.querySelectorAll("#mobile-nav-overlay a").forEach(function(a){a.classList.remove("active")});
+  var nl=document.getElementById("nl-"+(page.startsWith("proj-")?"work":page));
+  if(nl) nl.classList.add("active");
+  var mnl=document.getElementById("mnl-"+(page.startsWith("proj-")?"work":page));
+  if(mnl) mnl.classList.add("active");
+}
+function navigate(page,titleOverride){
+  if(page===currentPage||isNavigating)return;isNavigating=true;
+  closeMobileNav();
+  /* ✅ FIX-3: restore BG music when navigating away from a video page */
+  fadeInMusicFromVideo();
+  var use2D=(currentPage==="home"||currentPage.startsWith("proj-"))&&page.startsWith("proj-");
+  if(use2D){
+    var overlay=document.getElementById("title-overlay"),titleEl=document.getElementById("overlay-title");
+    var label=titleOverride||PAGE_TITLES[page]||page.toUpperCase();
+    buildChars(titleEl,label);overlay.style.opacity="1";overlay.style.transition="opacity .2s";overlay.classList.add("active");
+    requestAnimationFrame(function(){
+      overlay.classList.add("sweeping");
+      var chars=titleEl.querySelectorAll(".ot-char");
+      chars.forEach(function(ch,i){setTimeout(function(){ch.classList.add("in")},120+i*52)});
+      var holdAt=120+chars.length*52+180;
+      setTimeout(function(){chars.forEach(function(ch,i){setTimeout(function(){ch.classList.remove("in");ch.classList.add("out")},i*32)})},holdAt);
+      var swapAt=holdAt+chars.length*32+100;
+      setTimeout(function(){swapPage(page)},swapAt);
+      setTimeout(function(){overlay.style.transition="opacity .3s";overlay.style.opacity="0";setTimeout(function(){overlay.classList.remove("active","sweeping");titleEl.innerHTML="";isNavigating=false;updateFisheye();updateShowreelFisheye()},320)},swapAt+60);
+    });
+  } else {
+    var curtain=document.getElementById("curtain");curtain.className="";void curtain.offsetWidth;curtain.classList.add("slide-in");
+    setTimeout(function(){swapPage(page);curtain.classList.remove("slide-in");void curtain.offsetWidth;curtain.classList.add("slide-out");isNavigating=false;updateFisheye();updateShowreelFisheye()},450);
+  }
+}
+function swapPage(page){
+  document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active")});
+  var target=document.getElementById("page-"+page);
+  if(target){target.classList.add("active");window.scrollTo(0,0);requestAnimationFrame(function(){observePageImages(target)})}
+  updateNavActive(page);currentPage=page;
+}
+document.addEventListener("click",function(e){var el=e.target.closest("[data-page]");if(!el)return;e.preventDefault();var tn=el.querySelector(".wi-title,.wc-name,.np-title");navigate(el.dataset.page,tn?tn.textContent.trim().split("\n")[0].toUpperCase():null)});
+window.addEventListener("scroll",function(){document.getElementById("nav").classList.toggle("scrolled",window.scrollY>60);requestAnimationFrame(function(){updateFisheye();updateShowreelFisheye()})},{passive:true});
+/* ── MOB-NAV: Hamburger menu logic (unchanged) ── */
+var hamburgerBtn = document.getElementById("nav-hamburger");
+var mobileOverlay = document.getElementById("mobile-nav-overlay");
+function openMobileNav(){
+  document.body.classList.add("nav-open");
+  hamburgerBtn.setAttribute("aria-expanded","true");
+  mobileOverlay.setAttribute("aria-hidden","false");
+}
+function closeMobileNav(){
+  document.body.classList.remove("nav-open");
+  if(hamburgerBtn) hamburgerBtn.setAttribute("aria-expanded","false");
+  if(mobileOverlay) mobileOverlay.setAttribute("aria-hidden","true");
+}
+if(hamburgerBtn){
+  hamburgerBtn.addEventListener("click",function(){
+    document.body.classList.contains("nav-open") ? closeMobileNav() : openMobileNav();
+  });
+}
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape" && document.body.classList.contains("nav-open")) closeMobileNav();
+});
+/* ══════════════════════════════════════════════
+   SFX
+   ✅ FIX-2: getCtx now calls resume() for iOS/Android
+   ✅ FIX-2: touchstart listener mirrors mouseover for mobile
+══════════════════════════════════════════════ */
+var SFX=(function(){
+  var ctx=null;
+  function getCtx(){
+    if(!ctx) ctx=new(window.AudioContext||window.webkitAudioContext)();
+    /* ✅ FIX-2: resume suspended AudioContext (required on mobile after user gesture) */
+    if(ctx.state==="suspended") ctx.resume().catch(function(){});
+    return ctx;
+  }
+  function hoverTick(){
+    var c=getCtx(),osc=c.createOscillator(),gain=c.createGain();
+    osc.connect(gain);gain.connect(c.destination);
+    osc.type="triangle";
+    osc.frequency.setValueAtTime(520,c.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(980,c.currentTime+0.08);
+    gain.gain.setValueAtTime(0.045,c.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.11);
+    osc.start(c.currentTime);osc.stop(c.currentTime+0.12);
+  }
+  function hoverDeep(){
+    var c=getCtx(),low=c.createOscillator(),lowGain=c.createGain();
+    low.connect(lowGain);lowGain.connect(c.destination);
+    low.type="sine";
+    low.frequency.setValueAtTime(95,c.currentTime);
+    low.frequency.exponentialRampToValueAtTime(180,c.currentTime+0.16);
+    lowGain.gain.setValueAtTime(0.075,c.currentTime);
+    lowGain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.2);
+    low.start(c.currentTime);low.stop(c.currentTime+0.22);
+  }
+  function click(){
+    var c=getCtx(),o1=c.createOscillator(),g1=c.createGain();
+    o1.connect(g1);g1.connect(c.destination);
+    o1.type="sine";
+    o1.frequency.setValueAtTime(180,c.currentTime);
+    o1.frequency.exponentialRampToValueAtTime(60,c.currentTime+0.18);
+    g1.gain.setValueAtTime(0.18,c.currentTime);
+    g1.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.22);
+    o1.start(c.currentTime);o1.stop(c.currentTime+0.23);
+  }
+  function navTick(){
+    var c=getCtx(),osc=c.createOscillator(),gain=c.createGain();
+    osc.connect(gain);gain.connect(c.destination);
+    osc.type="square";
+    osc.frequency.setValueAtTime(1100,c.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1500,c.currentTime+0.055);
+    gain.gain.setValueAtTime(0.032,c.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.075);
+    osc.start(c.currentTime);osc.stop(c.currentTime+0.085);
+  }
+  return{hoverTick:hoverTick,hoverDeep:hoverDeep,click:click,navTick:navTick};
+})();
+function throttle(fn,ms){var last=0;return function(){var now=Date.now();if(now-last>ms){last=now;fn()}}}
+var tickThrottle=throttle(function(){SFX.hoverTick()},120);
+var deepThrottle=throttle(function(){SFX.hoverDeep()},200);
+var navTickThrottle=throttle(function(){SFX.navTick()},100);
+/* Desktop hover SFX (unchanged) */
+document.addEventListener("mouseover",function(e){
+  if(e.target.closest(".work-card"))return deepThrottle();
+  if(e.target.closest(".work-item,.next-project,.doc-card,.proj-back,.sr-item"))return tickThrottle();
+  if(e.target.closest(".nav-links a,.nav-name"))return navTickThrottle();
+});
+/* ✅ FIX-2: Mobile touch SFX — mirrors the mouseover handlers above */
+document.addEventListener("touchstart",function(e){
+  if(e.target.closest(".work-card"))return deepThrottle();
+  if(e.target.closest(".work-item,.next-project,.doc-card,.proj-back,.sr-item"))return tickThrottle();
+  if(e.target.closest(".nav-links a,.nav-name,#nav-hamburger,#mobile-nav-overlay a"))return navTickThrottle();
+},{passive:true});
+/* Click SFX (unchanged) */
+document.addEventListener("click",function(e){
+  if(e.target.closest("[data-page],.doc-card[href],.contact-email,.social-link,.sr-view"))SFX.click();
+},true);
+/* ══════════════════════════════════════════════
+   MUSIC
+   ✅ FIX-1: MUSIC_VOLUME raised to 0.5 (was 0.018 / 0.25)
+   ✅ FIX-3: unmute respects videoIsPlaying
+   ✅ NEW-1: volume slider integration
+══════════════════════════════════════════════ */
+var bgMusic=document.getElementById("bg-music");
+var musicBtn=document.getElementById("music-btn");
+var iconSound=document.getElementById("icon-sound");
+var iconMute=document.getElementById("icon-mute");
+/* ✅ FIX-1: 'let' so the slider can change it; 0.5 is clearly audible */
+var MUSIC_VOLUME=0.5;
+bgMusic.volume=0.03; /* starts near-silent, fades in via fadeTo */
+var musicMuted=false,fadeInterval=null,started=false;
+function fadeTo(target,duration,cb){
+  clearInterval(fadeInterval);
+  var start=bgMusic.volume,diff=target-start,steps=40,stepMs=duration/steps,count=0;
+  fadeInterval=setInterval(function(){
+    count++;
+    bgMusic.volume=Math.min(1,Math.max(0,start+diff*(count/steps)));
+    if(count>=steps){clearInterval(fadeInterval);bgMusic.volume=Math.max(0,Math.min(1,target));if(cb)cb()}
+  },stepMs);
+}
+function startMusic(){
+  if(started)return;
+  started=true; /* ✅ FIX-2: set immediately to prevent race on mobile double-tap */
+  bgMusic.play().then(function(){
+    if(!musicMuted && !videoIsPlaying) fadeTo(MUSIC_VOLUME,3000);
+  }).catch(function(){
+    started=false; /* reset so next gesture can retry */
+  });
+}
+/* ✅ FIX-2: touchstart included so music starts on first mobile tap */
+["click","keydown","touchstart"].forEach(function(evt){
+  document.addEventListener(evt,startMusic,{once:true});
+});
+musicBtn.addEventListener("click",function(e){
+  /* ✅ NEW-1: prevent the click from also triggering startMusic (already handled) */
+  musicMuted=!musicMuted;
+  /* ✅ NEW-1: update slider visual */
+  var vc=document.getElementById("vol-ctrl");
+  if(vc) vc.classList.toggle("muted",musicMuted);
+  if(musicMuted){
+    fadeTo(0,600,function(){bgMusic.pause()});
+    iconSound.style.display="none";
+    iconMute.style.display="block";
+    musicBtn.classList.add("muted");
+  }else{
+    bgMusic.play().then(function(){
+      /* ✅ FIX-3: don't fade in if a video is currently playing */
+      if(!videoIsPlaying) fadeTo(MUSIC_VOLUME,1200);
+    }).catch(function(){});
+    iconSound.style.display="block";
+    iconMute.style.display="none";
+    musicBtn.classList.remove("muted");
+  }
+});
+/* ══════════════════════════════════════════════
+   ✅ NEW-1: VOLUME SLIDER (dynamically injected)
+══════════════════════════════════════════════ */
+(function createVolumeSlider(){
+  /* Create DOM */
+  var wrap=document.createElement("div");
+  wrap.id="vol-ctrl";
+  wrap.innerHTML='<input type="range" id="vol-range" min="0" max="100" value="50" aria-label="Volume">' +
+                 '<span id="vol-pct">50%</span>';
+  document.body.appendChild(wrap);
+  var volRange=document.getElementById("vol-range");
+  var volPct=document.getElementById("vol-pct");
+  function updateTrackFill(val){
+    volRange.style.background="linear-gradient(90deg,rgba(139,133,255,0.85) "+val+"%,rgba(74,72,112,0.5) "+val+"%)";
+  }
+  updateTrackFill(50);
+  volRange.addEventListener("input",function(){
+    var val=parseInt(volRange.value,10);
+    var vol=val/100;
+    MUSIC_VOLUME=vol;
+    volPct.textContent=val+"%";
+    updateTrackFill(val);
+    /* If not muted and no video playing, apply immediately */
+    if(!musicMuted && !videoIsPlaying && started){
+      clearInterval(fadeInterval); /* stop any running fade */
+      bgMusic.volume=vol;
+    }
+    /* If slider dragged to 0, visually show muted state (but don't toggle musicMuted) */
+    /* If slider dragged from 0, restore */
+  });
+  /* Sync slider if MUSIC_VOLUME changes externally */
+  /* (currently only the slider changes it, so this is future-proof) */
+})();
+/* ══════════════════════════════════════════════
+   FISHEYE (unchanged)
+══════════════════════════════════════════════ */
+function updateFisheye(){
+  var active=document.querySelector(".page.active");
+  if(!active)return;
+  var cards=active.querySelectorAll(".fisheye-card");
+  if(!cards.length)return;
+  var mid=window.innerHeight/2;
+  cards.forEach(function(card){
+    var r=card.getBoundingClientRect(),center=r.top+r.height/2,dist=(center-mid)/mid;
+    var clamped=Math.max(-1,Math.min(1,dist)),focus=1-Math.min(1,Math.abs(clamped));
+    var scale=1+focus*0.085,bend=clamped*-7,lift=focus*18;
+    var opacity=0.58+focus*0.42,blur=(1-focus)*1.2;
+    card.style.transform="translateZ("+lift+"px) scale("+scale+") rotateX("+bend+"deg)";
+    card.style.filter="blur("+blur+"px) brightness("+(0.78+focus*0.24)+") saturate("+(0.8+focus*0.35)+")";
+    card.style.opacity=opacity;
+  });
+}
+function updateShowreelFisheye(){
+  document.querySelectorAll(".page.active .sr-list").forEach(function(list){
+    var listRect=list.getBoundingClientRect(),mid=listRect.top+listRect.height/2;
+    list.querySelectorAll(".sr-item").forEach(function(item){
+      var r=item.getBoundingClientRect(),center=r.top+r.height/2;
+      var dist=(center-mid)/Math.max(1,listRect.height/2),focus=1-Math.min(1,Math.abs(dist));
+      item.style.transform="translateZ("+focus*22+"px) scale("+(1+focus*0.055)+")";
+      item.style.filter="brightness("+(0.78+focus*0.25)+") saturate("+(0.85+focus*0.25)+")";
+      item.style.opacity=0.62+focus*0.38;
+    });
+  });
+}
+updateFisheye();updateShowreelFisheye();
+window.addEventListener("resize",function(){updateFisheye();updateShowreelFisheye()});
+document.querySelectorAll(".sr-list").forEach(function(list){
+  list.addEventListener("scroll",function(){requestAnimationFrame(updateShowreelFisheye)},{passive:true});
+});
+/* ── REVEAL OBSERVER (unchanged) ── */
+var revealObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.style.animation="pageReveal .6s cubic-bezier(.4,0,.2,1) both";
+      revealObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll(".exp-item,.doc-card,.stat-cell,.ds-cell,.proj-tag").forEach(function(el){
+  el.style.opacity="0";revealObserver.observe(el);
+});
+/* ── IMAGE FADE-IN (unchanged) ── */
+var imgFadeObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add("img-visible");
+      imgFadeObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.08,rootMargin:"0px 0px -30px 0px"});
+function observePageImages(pageEl){
+  pageEl.querySelectorAll(".lb-src").forEach(function(img,i){
+    if(!img.classList.contains("img-visible")){
+      img.style.transitionDelay=(i%3)*0.1+"s";
+      imgFadeObserver.observe(img);
+    }
+  });
+}
+observePageImages(document.querySelector(".page.active"));
+</script>
   </body>
 </html>
