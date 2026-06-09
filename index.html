@@ -1556,7 +1556,7 @@
 
       /* ── MUSIC (unchanged logic, volume raised to 0.25) ── */
       const bgMusic=document.getElementById("bg-music"),musicBtn=document.getElementById("music-btn"),iconSound=document.getElementById("icon-sound"),iconMute=document.getElementById("icon-mute");
-      bgMusic.volume=0;let musicMuted=false,fadeInterval=null,started=false;const MUSIC_VOLUME=0.25; /* CHANGE 5: raised from 0.018 to 0.25 */
+      bgMusic.volume=0;let musicMuted=false,fadeInterval=null,started=false;const MUSIC_VOLUME=0.09; /* CHANGE 5: raised from 0.018 to 0.25 */
       /* CHANGE 5: apply volume immediately on page load so it's ready before any play call */
       bgMusic.volume=0; /* starts silent, fades in via fadeTo */
       function fadeTo(target,duration,cb){clearInterval(fadeInterval);const start=bgMusic.volume,diff=target-start,steps=40,stepMs=duration/steps;let count=0;fadeInterval=setInterval(()=>{count++;bgMusic.volume=Math.min(1,Math.max(0,start+diff*(count/steps)));if(count>=steps){clearInterval(fadeInterval);bgMusic.volume=target;if(cb)cb()}},stepMs)}
