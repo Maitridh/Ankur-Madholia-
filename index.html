@@ -141,41 +141,46 @@
       .hero-title .line2{display:block;color:transparent;-webkit-text-stroke:1px rgba(232,223,200,0.55);font-size:0.55em;letter-spacing:0.05em}
       .hero-subtitle{font-size:0.85rem;font-weight:300;color:#c0bce0;letter-spacing:0.1em;text-transform:uppercase;margin-top:2.5rem}
 
-      /* ── REQ-3: Upgraded scroll indicator (replaces old .hero-scroll) ── */
+      /* ── SCROLL INDICATOR: premium vivid red gaming style ── */
       .hero-scroll{
         position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
         display:flex;flex-direction:column;align-items:center;gap:0;
       }
-      /* Vertical line with pulsing animation */
+      /* Thick red gradient line with strong glow */
       .hero-scroll-line{
-        width:1px;height:60px;
-        background:linear-gradient(to bottom,var(--coral),rgba(255,112,112,0.1));
+        width:2px;height:76px;
+        background:linear-gradient(to bottom,#ff1f3d,#ff5a5a,rgba(255,90,90,0.08));
+        box-shadow:0 0 10px rgba(255,31,61,0.85),0 0 24px rgba(255,31,61,0.45),0 0 48px rgba(255,31,61,0.2);
         animation:scrollLinePulse 1.9s ease-in-out infinite;
         transform-origin:top;
+        border-radius:2px;
       }
       @keyframes scrollLinePulse{
-        0%,100%{opacity:0.5;transform:scaleY(0.75)}
-        50%{opacity:1;transform:scaleY(1)}
+        0%,100%{opacity:0.55;transform:scaleY(0.72);box-shadow:0 0 8px rgba(255,31,61,0.6),0 0 18px rgba(255,31,61,0.3)}
+        50%{opacity:1;transform:scaleY(1);box-shadow:0 0 14px rgba(255,31,61,1),0 0 30px rgba(255,31,61,0.6),0 0 60px rgba(255,31,61,0.25)}
       }
-      /* Downward arrow at bottom of line */
+      /* Bright large arrow with red glow */
       .hero-scroll-arrow{
-        width:10px;height:10px;
-        border-right:1px solid var(--coral);
-        border-bottom:1px solid var(--coral);
+        width:14px;height:14px;
+        border-right:2px solid #ff1f3d;
+        border-bottom:2px solid #ff1f3d;
         transform:rotate(45deg);
-        margin-top:-4px;
+        margin-top:-5px;
+        box-shadow:2px 2px 8px rgba(255,31,61,0.8),2px 2px 20px rgba(255,31,61,0.35);
         animation:scrollArrowBounce 1.9s ease-in-out infinite;
       }
       @keyframes scrollArrowBounce{
-        0%,100%{opacity:0.4;transform:rotate(45deg) translate(-1px,-1px)}
-        50%{opacity:1;transform:rotate(45deg) translate(2px,2px)}
+        0%,100%{opacity:0.5;transform:rotate(45deg) translate(-2px,-2px);box-shadow:2px 2px 6px rgba(255,31,61,0.5)}
+        50%{opacity:1;transform:rotate(45deg) translate(3px,3px);box-shadow:2px 2px 14px rgba(255,31,61,1),2px 2px 28px rgba(255,31,61,0.45)}
       }
-      /* SCROLL label – bigger and more legible */
+      /* SCROLL label – white with subtle red glow, larger */
       .hero-scroll-label{
         font-family:var(--mono);
-        font-size:0.72rem; /* was 0.58rem */
-        letter-spacing:0.28em;text-transform:uppercase;color:#c0bce0;
-        margin-top:10px;
+        font-size:0.82rem;
+        letter-spacing:0.35em;text-transform:uppercase;
+        color:#ffffff;
+        text-shadow:0 0 10px rgba(255,31,61,0.9),0 0 24px rgba(255,31,61,0.4);
+        margin-top:12px;
       }
 
       /* ── MARQUEE ── */
@@ -396,6 +401,37 @@
       .sr-section-label::after{content:"";flex:1;height:1px;background:rgba(200,196,255,0.18)}
 
 
+      /* ── SHOWREEL-SCROLL: second scroll indicator below showreel (desktop only) ── */
+      .showreel-scroll{
+        display:flex;flex-direction:column;align-items:center;gap:0;
+        padding:2.5rem 0 0;
+      }
+      .showreel-scroll-line{
+        width:2px;height:76px;
+        background:linear-gradient(to bottom,#ff1f3d,#ff5a5a,rgba(255,90,90,0.08));
+        box-shadow:0 0 10px rgba(255,31,61,0.85),0 0 24px rgba(255,31,61,0.45),0 0 48px rgba(255,31,61,0.2);
+        animation:scrollLinePulse 1.9s ease-in-out infinite;
+        transform-origin:top;
+        border-radius:2px;
+      }
+      .showreel-scroll-arrow{
+        width:14px;height:14px;
+        border-right:2px solid #ff1f3d;
+        border-bottom:2px solid #ff1f3d;
+        transform:rotate(45deg);
+        margin-top:-5px;
+        box-shadow:2px 2px 8px rgba(255,31,61,0.8),2px 2px 20px rgba(255,31,61,0.35);
+        animation:scrollArrowBounce 1.9s ease-in-out infinite;
+      }
+      .showreel-scroll-label{
+        font-family:var(--mono);
+        font-size:0.82rem;
+        letter-spacing:0.35em;text-transform:uppercase;
+        color:#ffffff;
+        text-shadow:0 0 10px rgba(255,31,61,0.9),0 0 24px rgba(255,31,61,0.4);
+        margin-top:12px;
+      }
+
       /* ══════════════════════════════════════════════
          MOBILE RESPONSIVE OVERRIDES
          All rules below only affect ≤900px screens
@@ -594,14 +630,21 @@
           grid-template-columns: 1fr;
           min-height: auto;
         }
+        /* ── MOB-SHOWREEL: no sticky, all natural scroll ── */
         .sr-list {
-          position: static;
+          position: static;   /* remove sticky */
+          top: auto;          /* override desktop sticky top */
           max-height: 38vh;
           border-right: none;
           border-bottom: 1px solid var(--border-bright);
           overflow-y: auto;
         }
-        .sr-list-header { padding: 1.4rem 1.25rem 1rem; }
+        /* sr-list-header: remove its own sticky so it scrolls with the list */
+        .sr-list-header {
+          position: static;   /* override sticky from desktop rule */
+          top: auto;
+          padding: 1.4rem 1.25rem 1rem;
+        }
         .sr-list-title  { font-size: 1.2rem; }
         .sr-item        { padding: 1rem 1.25rem; }
         .sr-item.active { padding-left: 1.5rem; }
@@ -616,8 +659,12 @@
         .sr-overlay-content { padding: 1.2rem 1.25rem 1.5rem; }
         .sr-now-title   { font-size: clamp(1rem, 5vw, 1.6rem); }
 
-        /* ── MOB: sr-section-label padding ── */
-        .sr-section-label { padding: 2rem 1.25rem 0; }
+        /* ── MOB: sr-section-label: no sticky, natural flow ── */
+        .sr-section-label {
+          position: static;   /* override any inherited sticky */
+          top: auto;
+          padding: 2rem 1.25rem 0;
+        }
 
         /* ── MOB: music button smaller & tucked ── */
         #music-btn {
@@ -629,6 +676,11 @@
 
         /* ── MOB: retro divider ── */
         .retro-divider { padding: 0.8rem 1.25rem; }
+
+        /* CHANGE 4: hide showreel scroll indicator on mobile, no spacing ── */
+        .showreel-scroll {
+          display: none;
+        }
       }
 
       /* ── Very small screens (320–480px) extra tweaks ── */
@@ -715,6 +767,12 @@
       </div></div>
       <div class="sr-section-label">Project Showreel</div>
       <section class="showreel" id="showreel-home" data-list-title="Showreel" data-eyebrow="All Projects" data-src="main"></section>
+      <!-- CHANGE 3: second scroll indicator below showreel, desktop only -->
+      <div class="showreel-scroll">
+        <div class="showreel-scroll-line"></div>
+        <div class="showreel-scroll-arrow"></div>
+        <span class="showreel-scroll-label">SCROLL</span>
+      </div>
       <section class="home-work">
         <div class="home-work-label">Selected Work</div>
         <a class="work-item fisheye-card" href="#" data-page="proj-vengeance"><div class="wi-left"><span class="wi-num">01</span><div><div class="wi-title">The Vengeance</div><div class="wi-type">3D Action Game - 2024</div></div></div><span class="wi-arrow">&rarr;</span></a>
@@ -1486,13 +1544,15 @@
       document.addEventListener("mouseover",e=>{if(e.target.closest(".work-card"))return deepThrottle();if(e.target.closest(".work-item,.next-project,.doc-card,.proj-back,.sr-item"))return tickThrottle();if(e.target.closest(".nav-links a,.nav-name"))return navTickThrottle()});
       document.addEventListener("click",e=>{if(e.target.closest("[data-page],.doc-card[href],.contact-email,.social-link,.sr-view"))SFX.click()},true);
 
-      /* ── MUSIC (unchanged) ── */
+      /* ── MUSIC (unchanged logic, volume raised to 0.25) ── */
       const bgMusic=document.getElementById("bg-music"),musicBtn=document.getElementById("music-btn"),iconSound=document.getElementById("icon-sound"),iconMute=document.getElementById("icon-mute");
-      bgMusic.volume=0;let musicMuted=false,fadeInterval=null,started=false;const MUSIC_VOLUME=0.018;
+      bgMusic.volume=0;let musicMuted=false,fadeInterval=null,started=false;const MUSIC_VOLUME=0.25; /* CHANGE 5: raised from 0.018 to 0.25 */
+      /* CHANGE 5: apply volume immediately on page load so it's ready before any play call */
+      bgMusic.volume=0; /* starts silent, fades in via fadeTo */
       function fadeTo(target,duration,cb){clearInterval(fadeInterval);const start=bgMusic.volume,diff=target-start,steps=40,stepMs=duration/steps;let count=0;fadeInterval=setInterval(()=>{count++;bgMusic.volume=Math.min(1,Math.max(0,start+diff*(count/steps)));if(count>=steps){clearInterval(fadeInterval);bgMusic.volume=target;if(cb)cb()}},stepMs)}
-      function startMusic(){if(started)return;bgMusic.play().then(()=>{started=true;if(!musicMuted)fadeTo(MUSIC_VOLUME,3000)}).catch(()=>{})}
+      function startMusic(){if(started)return;bgMusic.play().then(()=>{started=true;if(!musicMuted)fadeTo(MUSIC_VOLUME,3000)}).catch(()=>{})} /* CHANGE 5: fades to 0.25 */
       ["click","keydown","touchstart"].forEach(evt=>document.addEventListener(evt,startMusic,{once:true}));
-      musicBtn.addEventListener("click",()=>{musicMuted=!musicMuted;if(musicMuted){fadeTo(0,600,()=>bgMusic.pause());iconSound.style.display="none";iconMute.style.display="block";musicBtn.classList.add("muted")}else{bgMusic.play().then(()=>fadeTo(MUSIC_VOLUME,1200)).catch(()=>{});iconSound.style.display="block";iconMute.style.display="none";musicBtn.classList.remove("muted")}});
+      musicBtn.addEventListener("click",()=>{musicMuted=!musicMuted;if(musicMuted){fadeTo(0,600,()=>bgMusic.pause());iconSound.style.display="none";iconMute.style.display="block";musicBtn.classList.add("muted")}else{bgMusic.play().then(()=>fadeTo(MUSIC_VOLUME,1200)).catch(()=>{}); /* CHANGE 5: re-enable fades back to 0.25 */ iconSound.style.display="block";iconMute.style.display="none";musicBtn.classList.remove("muted")}});
 
       /* ── FISHEYE (unchanged) ── */
       function updateFisheye(){const active=document.querySelector(".page.active");if(!active)return;const cards=active.querySelectorAll(".fisheye-card");if(!cards.length)return;const mid=window.innerHeight/2;cards.forEach(card=>{const r=card.getBoundingClientRect(),center=r.top+r.height/2,dist=(center-mid)/mid,clamped=Math.max(-1,Math.min(1,dist)),focus=1-Math.min(1,Math.abs(clamped)),scale=1+focus*0.085,bend=clamped*-7,lift=focus*18,opacity=0.58+focus*0.42,blur=(1-focus)*1.2;card.style.transform=`translateZ(${lift}px) scale(${scale}) rotateX(${bend}deg)`;card.style.filter=`blur(${blur}px) brightness(${0.78+focus*0.24}) saturate(${0.8+focus*0.35})`;card.style.opacity=opacity})}
